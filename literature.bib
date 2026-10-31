@@ -1,0 +1,2591 @@
+@InProceedings{autoq2,
+author="Chen, Yu-Fang
+and Chung, Kai-Min
+and Hsieh, Min-Hsiu
+and Huang, Wei-Jia
+and Leng{\'a}l, Ond{\v{r}}ej
+and Lin, Jyun-Ao
+and Tsai, Wei-Lun",
+editor="Gurfinkel, Arie
+and Heule, Marijn",
+title="AutoQ 2.0: From Verification of Quantum Circuits to Verification of Quantum Programs",
+booktitle="Tools and Algorithms for the Construction and Analysis of Systems",
+year="2025",
+publisher="Springer Nature Switzerland",
+address="Cham",
+pages="87--108",
+abstract="We present a verifier of quantum programs called AutoQ 2.0. Quantum programs extend quantum circuits (the domain of AutoQ 1.0) by classical control flow constructs, which enable users to describe advanced quantum algorithms in a formal and precise manner. The extension is highly non-trivial, as we needed to tackle both theoretical challenges (such as the treatment of measurement, the normalization problem, and lifting techniques for verification of classical programs with loops to the quantum world), and engineering issues (such as extending the input format with a support for specifying loop invariants). We have successfully used AutoQ 2.0 to verify two types of advanced quantum programs that cannot be expressed using only quantum circuits: the repeat-until-success (RUS) algorithm and the weak-measurement-based version of Grover's search algorithm. AutoQ 2.0 can efficiently verify all our benchmarks: all RUS algorithms were verified instantly and, for the weak-measurement-based version of Grover's search, we were able to handle the case of 100 qubits in {\$}{\$}{\backslash}sim {\$}{\$}∼20 minutes.",
+isbn="978-3-031-90660-2"
+}
+
+
+
+@inproceedings{svore2018q,
+  title={Q\# enabling scalable quantum computing and development with a high-level dsl},
+  author={Svore, Krysta and Geller, Alan and Troyer, Matthias and Azariah, John and Granade, Christopher and Heim, Bettina and Kliuchnikov, Vadym and Mykhailova, Mariia and Paz, Andres and Roetteler, Martin},
+  booktitle={Proceedings of the real world domain specific languages workshop 2018},
+  pages={1--10},
+  year={2018}
+}
+
+
+@article{cross2022openqasm,
+  title={OpenQASM 3: A broader and deeper quantum assembly language},
+  author={Cross, Andrew and Javadi-Abhari, Ali and Alexander, Thomas and De Beaudrap, Niel and Bishop, Lev S and Heidel, Steven and Ryan, Colm A and Sivarajah, Prasahnt and Smolin, John and Gambetta, Jay M and others},
+  journal={ACM Transactions on Quantum Computing},
+  volume={3},
+  number={3},
+  pages={1--50},
+  year={2022},
+  publisher={ACM New York, NY}
+}
+
+@article{koch2025guppy,
+  title={GUPPY: pythonic quantum-classical programming},
+  author={Koch, Mark and Lawrence, Alan and Singhal, Kartik and Sivarajah, Seyon and Duncan, Ross},
+  journal={arXiv preprint arXiv:2510.12582},
+  year={2025}
+}
+
+@article{weakly:chris,
+doi = {10.1088/2058-9565/ac47f1},
+url = {https://dx.doi.org/10.1088/2058-9565/ac47f1},
+year = {2022},
+month = {feb},
+publisher = {IOP Publishing},
+volume = {7},
+number = {2},
+pages = {025007},
+author = {Pablo Andrés-Martínez and Chris Heunen},
+title = {Weakly measured while loops: peeking at quantum states},
+journal = {Quantum Science and Technology},
+abstract = {A while loop tests a termination condition on every iteration. On a quantum computer, such measurements perturb the evolution of the algorithm. We define a while loop primitive using weak measurements, offering a trade-off between the perturbation caused and the amount of information gained per iteration. This trade-off is adjusted with a parameter set by the programmer. We provide sufficient conditions that let us determine, with arbitrarily high probability, a worst-case estimate of the number of iterations the loop will run for. As an example, we solve Grover’s search problem using a while loop and prove the quadratic quantum speed-up is maintained.}
+}
+
+
+@article{moreira2023realization,
+  title={Realization of a quantum neural network using repeat-until-success circuits in a superconducting quantum processor},
+  author={Moreira, MS and Guerreschi, Gian Giacomo and Vlothuizen, Wouter and Marques, Jorge F and van Straten, Jeroen and Premaratne, Shavindra P and Zou, Xiang and Ali, Hany and Muthusubramanian, Nandini and Zachariadis, Christos and others},
+  journal={npj Quantum Information},
+  volume={9},
+  number={1},
+  pages={118},
+  year={2023},
+  publisher={Nature Publishing Group UK London}
+}
+
+
+@article{applyRUS,
+author = {Wiebe, Nathan and Roetteler, Martin},
+title = {Quantum arithmetic and numerical analysis using repeat-until-success circuits},
+year = {2016},
+issue_date = {January 2016},
+publisher = {Rinton Press, Incorporated},
+address = {Paramus, NJ},
+volume = {16},
+number = {1–2},
+issn = {1533-7146},
+abstract = {We develop a method for approximate synthesis of single-qubit rotations of the form e-if(ϕ1,...,ϕk)X that is based on the Repeat-Until-Success (RUS) framework for quantum circuit synthesis. We demonstrate how smooth computable functions f can be synthesized from two basic primitives. This synthesis approach constitutes a manifestly quantum form of arithmetic that differs greatly from the approaches commonly used in quantum algorithms. The key advantage of our approach is that it requires far fewer qubits than existing approaches: as a case in point, we show that using as few as 3 ancilla qubits, one can obtain RUS circuits for approximate multiplication and reciprocals. We also analyze the costs of performing multiplication and inversion on a quantum computer using conventional approaches and find that they can require too many qubits to execute on a small quantum computer, unlike our approach.},
+journal = {Quantum Info. Comput.},
+month = jan,
+pages = {134–178},
+numpages = {45},
+keywords = {quantum computing, quantum circuit synthesis, quantum algorithms}
+}
+
+  
+
+
+
+@article{RUS,
+author = {Paetznick, Adam and Svore, Krysta M.},
+title = {Repeat-until-Success: Non-Deterministic Decomposition of Single-Qubit Unitaries},
+year = {2014},
+issue_date = {November 2014},
+publisher = {Rinton Press, Incorporated},
+address = {Paramus, NJ},
+volume = {14},
+number = {15–16},
+issn = {1533-7146},
+abstract = {We present a decomposition technique that uses non-deterministic circuits to approximate an arbitrary single-qubit unitary to within distance ε and requires significantly fewer non-Clifford gates than existing techniques. We develop "Repeat-Until-Success" (RUS) circuits and characterize unitaries that can be exactly represented as an RUS circuit. Our RUS circuits operate by conditioning on a given measurement outcome and using only a small number of non-Clifford gates and ancilla qubits. We construct an algorithm based on RUS circuits that approximates an arbitrary single-qubit Z-axis rotation to within distance ε, where the number of T gates scales as 1:26 log2(1/ε) - 3:53, an improvement of roughly three-fold over state-of-the-art techniques. We then extend our algorithm and show that a scaling of 2:4 log2(1/ε) - 3:28 can be achieved for arbitrary unitaries and a small range of ε, which is roughly twice as good as optimal deterministic decomposition methods.},
+journal = {Quantum Info. Comput.},
+month = {nov},
+pages = {1277–1301},
+numpages = {25},
+keywords = {quantum circuits, unitary decomposition}
+}
+
+@article{RUS2,
+  title = {Efficient Synthesis of Universal Repeat-Until-Success Quantum Circuits},
+  author = {Bocharov, Alex and Roetteler, Martin and Svore, Krysta M.},
+  journal = {Phys. Rev. Lett.},
+  volume = {114},
+  issue = {8},
+  pages = {080502},
+  numpages = {5},
+  year = {2015},
+  month = {Feb},
+  publisher = {American Physical Society},
+  doi = {10.1103/PhysRevLett.114.080502},
+  url = {https://link.aps.org/doi/10.1103/PhysRevLett.114.080502}
+}
+
+@article{LSTA2025,
+author = {Abdulla, Parosh Aziz and Chen, Yo-Ga and Chen, Yu-Fang and Hol\'{\i}k, Luk\'{a}\v{s} and Leng\'{a}l, Ond\v{r}ej and Lin, Jyun-Ao and Lo, Fang-Yi and Tsai, Wei-Lun},
+title = {Verifying Quantum Circuits with Level-Synchronized Tree Automata},
+year = {2025},
+issue_date = {January 2025},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+volume = {9},
+number = {POPL},
+url = {https://doi.org/10.1145/3704868},
+doi = {10.1145/3704868},
+journal = {Proc. ACM Program. Lang.},
+month = jan,
+articleno = {32},
+numpages = {31},
+keywords = {quantum circuits, tree automata, verification}
+}
+
+
+
+
+
+@misc{tata,
+  title={Tree automata techniques and applications},
+  author={Comon, Hubert and Dauchet, Max and Gilleron, R{\'e}mi and Jacquemard, Florent and Lugiez, Denis and L{\"o}ding, Christof and Tison, Sophie and Tommasi, Marc},
+  year={2008}
+}
+
+@article{Kiefer20,
+  author       = {Stefan Kiefer},
+  title        = {Notes on Equivalence and Minimization of Weighted Automata},
+  journal      = {CoRR},
+  volume       = {abs/2009.01217},
+  year         = {2020},
+  url          = {https://arxiv.org/abs/2009.01217},
+  eprinttype    = {arXiv},
+  eprint       = {2009.01217},
+  timestamp    = {Wed, 16 Sep 2020 15:27:56 +0200},
+  biburl       = {https://dblp.org/rec/journals/corr/abs-2009-01217.bib},
+}
+@inproceedings{abdulla2010simulation,
+  title={When Simulation Meets Antichains: (On Checking Language Inclusion of Nondeterministic Finite (Tree) Automata)},
+  author={Abdulla, Parosh Aziz and Chen, Yu-Fang and Hol{\'\i}k, Luk{\'a}{\v{s}} and Mayr, Richard and Vojnar, Tom{\'a}{\v{s}}},
+  booktitle={Tools and Algorithms for the Construction and Analysis of Systems: 16th International Conference, TACAS 2010, Held as Part of the Joint European Conferences on Theory and Practice of Software, ETAPS 2010, Paphos, Cyprus, March 20-28, 2010. Proceedings 16},
+  pages={158--174},
+  year={2010},
+  organization={Springer}
+}
+
+
+@article{PhysRevLett.91.147902,
+  title = {Efficient Classical Simulation of Slightly Entangled Quantum Computations},
+  author = {Vidal, Guifr\'e},
+  journal = {Phys. Rev. Lett.},
+  volume = {91},
+  issue = {14},
+  pages = {147902},
+  numpages = {4},
+  year = {2003},
+  month = {Oct},
+  publisher = {American Physical Society},
+  doi = {10.1103/PhysRevLett.91.147902},
+  url = {https://link.aps.org/doi/10.1103/PhysRevLett.91.147902}
+}
+
+
+@article{markov2008simulating,
+  title={Simulating quantum computation by contracting tensor networks},
+  author={Markov, Igor L and Shi, Yaoyun},
+  journal={SIAM Journal on Computing},
+  volume={38},
+  number={3},
+  pages={963--981},
+  year={2008},
+  publisher={SIAM}
+}
+
+@article{ChenCLLTY23,
+  author       = {Yu{-}Fang Chen and
+                  Kai{-}Min Chung and
+                  Ondrej Leng{\'{a}}l and
+                  Jyun{-}Ao Lin and
+                  Wei{-}Lun Tsai and
+                  Di{-}De Yen},
+  title        = {An Automata-Based Framework for Verification and Bug Hunting in Quantum
+                  Circuits},
+  journal      = {Proc. {ACM} Program. Lang.},
+  volume       = {7},
+  number       = {{PLDI}},
+  pages        = {1218--1243},
+  year         = {2023},
+  url          = {https://doi.org/10.1145/3591270},
+  doi          = {10.1145/3591270},
+  timestamp    = {Mon, 28 Aug 2023 17:23:09 +0200},
+  biburl       = {https://dblp.org/rec/journals/pacmpl/0001CLLTY23.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
+}
+
+
+@article{Fagan_2019,
+	doi = {10.4204/eptcs.287.5},
+  
+	url = {https://doi.org/10.4204%2Feptcs.287.5},
+  
+	year = 2019,
+	month = {jan},
+  
+	publisher = {Open Publishing Association},
+  
+	volume = {287},
+  
+	pages = {85--105},
+  
+	author = {Andrew Fagan and Ross Duncan},
+  
+	title = {Optimising Clifford Circuits with Quantomatic},
+  
+	journal = {Electronic Proceedings in Theoretical Computer Science}
+}
+
+@article{burgholzer2020advanced,
+  title={Advanced equivalence checking for quantum circuits},
+  author={Burgholzer, Lukas and Wille, Robert},
+  journal={IEEE Transactions on Computer-Aided Design of Integrated Circuits and Systems},
+  volume={40},
+  number={9},
+  pages={1810--1824},
+  year={2020},
+  publisher={IEEE},
+  doi          = {10.1109/TCAD.2020.3032630},
+}
+
+@inproceedings{PehamBW22,
+  author    = {Tom Peham and
+               Lukas Burgholzer and
+               Robert Wille},
+  editor    = {Rob Oshana},
+  title     = {Equivalence checking paradigms in quantum circuit design: a case study},
+  booktitle = {{DAC} '22: 59th {ACM/IEEE} Design Automation Conference, San Francisco,
+               California, USA, July 10 - 14, 2022},
+  pages     = {517--522},
+  publisher = {{ACM}},
+  year      = {2022},
+  url       = {https://doi.org/10.1145/3489517.3530480},
+  doi       = {10.1145/3489517.3530480},
+  timestamp = {Thu, 25 Aug 2022 14:23:53 +0200},
+  biburl    = {https://dblp.org/rec/conf/dac/PehamBW22.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+@inproceedings{HattoriY18,
+  author    = {Wakaki Hattori and
+               Shigeru Yamashita},
+  editor    = {Jarkko Kari and
+               Irek Ulidowski},
+  title     = {Quantum Circuit Optimization by Changing the Gate Order for {2D} Nearest
+               Neighbor Architectures},
+  booktitle = {Reversible Computation - 10th International Conference, {RC} 2018,
+               Leicester, UK, September 12-14, 2018, Proceedings},
+  series    = {LNCS},
+  volume    = {11106},
+  pages     = {228--243},
+  publisher = {Springer},
+  year      = {2018},
+  url       = {https://doi.org/10.1007/978-3-319-99498-7\_16},
+  doi       = {10.1007/978-3-319-99498-7\_16},
+  timestamp = {Tue, 14 May 2019 10:00:38 +0200},
+  biburl    = {https://dblp.org/rec/conf/rc/HattoriY18.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+@article{ItokoRIM20,
+  author    = {Toshinari Itoko and
+               Rudy Raymond and
+               Takashi Imamichi and
+               Atsushi Matsuo},
+  title     = {Optimization of quantum circuit mapping using gate transformation
+               and commutation},
+  journal   = {Integr.},
+  volume    = {70},
+  pages     = {43--50},
+  year      = {2020},
+  url       = {https://doi.org/10.1016/j.vlsi.2019.10.004},
+  doi       = {10.1016/j.vlsi.2019.10.004},
+  timestamp = {Sun, 02 Oct 2022 15:39:13 +0200},
+  biburl    = {https://dblp.org/rec/journals/integration/ItokoRIM20.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+@article{NamRSCM18,
+  author    = {Yunseong Nam and
+               Neil J. Ross and
+               Yuan Su and
+               Andrew M. Childs and
+               Dmitri Maslov},
+  title     = {Automated optimization of large quantum circuits with continuous parameters},
+  journal   = {npj Quantum Information},
+  volume    = {4},
+  issue     = {23},
+  year      = {2018},
+  doi       = {10.1038/s41534-018-0072-4}
+}
+
+@inproceedings{SoekenWDD10,
+  author    = {Mathias Soeken and
+               Robert Wille and
+               Gerhard W. Dueck and
+               Rolf Drechsler},
+  title     = {Window optimization of reversible and quantum circuits},
+  booktitle = {13th {IEEE} International Symposium on Design and Diagnostics of Electronic
+               Circuits and Systems, {DDECS} 2010, Vienna, Austria, April 14-16,
+               2010},
+  pages     = {341--345},
+  publisher = {{IEEE} Computer Society},
+  year      = {2010},
+  url       = {https://doi.org/10.1109/DDECS.2010.5491754},
+  doi       = {10.1109/DDECS.2010.5491754},
+  timestamp = {Wed, 16 Oct 2019 14:14:50 +0200},
+  biburl    = {https://dblp.org/rec/conf/ddecs/SoekenWDD10.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+@inproceedings{lengal2012vata,
+  title={{VATA}: A library for efficient manipulation of non-deterministic tree automata},
+  author={Leng{\'a}l, Ond{\v{r}}ej and {\v{S}}im{\'a}{\v{c}}ek, Ji{\v{r}}{\'\i} and Vojnar, Tom{\'a}{\v{s}}},
+  booktitle={International Conference on Tools and Algorithms for the Construction and Analysis of Systems},
+  pages={79--94},
+  year={2012},
+  organization={Springer},
+  doi= {10.1007/978-3-642-28756-5\_7}
+}
+@inproceedings{Chareton2021,
+ title = {An Automated Deductive Verification Framework for Circuit-Building Quantum Programs},
+ author = {Chareton, Christophe and Bardin, S{\'e}bastien and Bobot, Fran{\c c}ois and Perrelle, Valentin and Valiron, Beno{\^i}t},
+ year = {2021},
+ month = {March},
+ booktitle = {ESOP},
+ editor = {Yoshida, Nobuko},
+ publisher = {{Springer International Publishing}},
+ address = {{Cham}},
+ series = {LNCS},
+ volume = {12648},
+ pages = {148--177},
+  doi          = {10.1007/978-3-030-72019-3\_6},
+}
+@article{dawson2005solovay,
+  author       = {Christopher M. Dawson and
+                  Michael A. Nielsen},
+  title        = {The {Solovay}-{Kitaev} algorithm},
+  journal      = {Quantum Inf. Comput.},
+  volume       = {6},
+  number       = {1},
+  pages        = {81--95},
+  year         = {2006},
+  url          = {https://doi.org/10.26421/QIC6.1-6},
+  doi          = {10.26421/QIC6.1-6},
+  timestamp    = {Fri, 30 Apr 2021 10:56:19 +0200},
+  biburl       = {https://dblp.org/rec/journals/qic/DawsonN06.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
+}
+
+@inproceedings{unruh2019quantum,
+  title={Quantum {Hoare} logic with ghost variables},
+  author={Unruh, Dominique},
+  booktitle={2019 34th Annual ACM/IEEE Symposium on Logic in Computer Science (LICS)},
+  pages={1--13},
+  year={2019},
+  organization={IEEE},
+  doi          = {10.1109/LICS.2019.8785779},
+}
+
+@inproceedings{heizmann2018ultimate,
+  title={{Ultimate} {Automizer} and the search for perfect interpolants},
+  author={Heizmann, Matthias and Chen, Yu-Fang and Dietsch, Daniel and Greitschus, Marius and Hoenicke, Jochen and Li, Yong and Nutz, Alexander and Musa, Betim and Schilling, Christian and Schindler, Tanja and others},
+  booktitle={International Conference on Tools and Algorithms for the Construction and Analysis of Systems},
+  pages={447--451},
+  year={2018},
+  organization={Springer},
+  doi          = {10.1007/978-3-319-89963-3\_30},
+}
+
+@inproceedings{chen2016pac,
+  title={PAC learning-based verification and model synthesis},
+  author={Chen, Yu-Fang and Hsieh, Chiao and Leng{\'a}l, Ond{\v{r}}ej and Lii, Tsung-Ju and Tsai, Ming-Hsien and Wang, Bow-Yaw and Wang, Farn},
+  booktitle={Proceedings of the 38th International Conference on Software Engineering},
+  pages={714--724},
+  year={2016},
+  doi          = {10.1145/2884781.2884860},
+}
+
+@inproceedings{chen2017learning,
+  title={Learning to prove safety over parameterised concurrent systems},
+  author={Chen, Yu-Fang and Hong, Chih-Duo and Lin, Anthony W and R{\"u}mmer, Philipp},
+  booktitle={2017 Formal Methods in Computer Aided Design (FMCAD)},
+  pages={76--83},
+  year={2017},
+  organization={IEEE},
+  doi          = {10.23919/FMCAD.2017.8102244},
+}
+@inproceedings{yu2008symbolic,
+	title={Symbolic string verification: An automata-based approach},
+	author={Yu, Fang and Bultan, Tevfik and Cova, Marco and Ibarra, Oscar H},
+	booktitle={International SPIN Workshop on Model Checking of Software},
+	pages={306--324},
+	year={2008},
+	organization={Springer},
+  doi          = {10.1007/978-3-540-85114-1\_21}
+}
+
+@inproceedings{amy2018towards,
+  author       = {Matthew Amy},
+  editor       = {Peter Selinger and
+                  Giulio Chiribella},
+  title        = {Towards Large-scale Functional Verification of Universal Quantum Circuits},
+  booktitle    = {Proceedings 15th International Conference on Quantum Physics and Logic,
+                  {QPL} 2018, Halifax, Canada, 3-7th June 2018},
+  series       = {{EPTCS}},
+  volume       = {287},
+  pages        = {1--21},
+  year         = {2018},
+  url          = {https://doi.org/10.4204/EPTCS.287.1},
+  doi          = {10.4204/EPTCS.287.1},
+  timestamp    = {Wed, 29 May 2019 11:09:08 +0200},
+  biburl       = {https://dblp.org/rec/journals/corr/abs-1805-06908.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
+}
+
+@inproceedings{d2017power,
+  title={The power of symbolic automata and transducers},
+  author={D’Antoni, Loris and Veanes, Margus},
+  booktitle={International Conference on Computer Aided Verification},
+  pages={47--67},
+  year={2017},
+  organization={Springer},
+  doi          = {10.1007/978-3-319-63387-9\_3},
+}
+@inproceedings{chen2017register,
+  title={Register automata with linear arithmetic},
+  author={Chen, Yu-Fang and Leng{\'a}l, Ond{\v{r}}ej and Tan, Tony and Wu, Zhilin},
+  booktitle={2017 32nd Annual ACM/IEEE Symposium on Logic in Computer Science (LICS)},
+  pages={1--12},
+  year={2017},
+  organization={IEEE},
+  doi          = {10.1109/LICS.2017.8005111},
+}
+@phdthesis{Amy19,
+  title={Formal Methods in Quantum Circuit Design},
+  author={Matthew Amy},
+  year={2019},
+  school={University of Waterloo}
+}
+
+@inproceedings{haner20175,
+  title={5 petabyte simulation of a 45-qubit quantum circuit},
+  author={H{\"a}ner, Thomas and Steiger, Damian S},
+  booktitle={Proceedings of the International Conference for High Performance Computing, Networking, Storage and Analysis},
+  pages={1--10},
+  year={2017}
+}
+@article{huang2020classical,
+  title={Classical simulation of quantum supremacy circuits},
+  author={Huang, Cupjin and Zhang, Fang and Newman, Michael and Cai, Junjie and Gao, Xun and Tian, Zhengxiong and Wu, Junyin and Xu, Haihong and Yu, Huanjun and Yuan, Bo and others},
+  journal={arXiv preprint arXiv:2005.06787},
+  year={2020}
+}
+
+@article{hietala2019verified,
+  title={Verified optimization in a quantum intermediate representation},
+  author={Hietala, Kesha and Rand, Robert and Hung, Shih-Han and Wu, Xiaodi and Hicks, Michael},
+  journal={arXiv preprint arXiv:1904.06319},
+  year={2019}
+}
+
+@inproceedings{xu2022quartz,
+  title={Quartz: superoptimization of Quantum circuits},
+  author={Xu, Mingkuan and Li, Zikun and Padon, Oded and Lin, Sina and Pointing, Jessica and Hirth, Auguste and Ma, Henry and Palsberg, Jens and Aiken, Alex and Acar, Umut A and others},
+  booktitle={Proceedings of the 43rd ACM SIGPLAN International Conference on Programming Language Design and Implementation},
+  pages={625--640},
+  year={2022},
+  doi          = {10.1145/3519939.3523433}
+}
+@article{yan2022incorrectness,
+  title={On incorrectness logic for Quantum programs},
+  author={Yan, Peng and Jiang, Hanru and Yu, Nengkun},
+  journal={Proceedings of the ACM on Programming Languages},
+  volume={6},
+  number={OOPSLA1},
+  pages={1--28},
+  year={2022},
+  publisher={ACM New York, NY, USA},
+  doi          = {10.1145/3527316}
+}
+@article{villalonga2019flexible,
+  title={A flexible high-performance simulator for verifying and benchmarking quantum circuits implemented on real hardware},
+  author={Villalonga, Benjamin and Boixo, Sergio and Nelson, Bron and Henze, Christopher and Rieffel, Eleanor and Biswas, Rupak and Mandr{\`a}, Salvatore},
+  journal={npj Quantum Information},
+  volume={5},
+  number={1},
+  pages={1--16},
+  year={2019},
+  publisher={Nature Publishing Group}
+}
+@article{cuccaro2004new,
+  title={A new quantum ripple-carry addition circuit},
+  author={Cuccaro, Steven A and Draper, Thomas G and Kutin, Samuel A and Moulton, David Petrie},
+  journal={arXiv preprint quant-ph/0410184},
+  year={2004}
+}
+
+@article{hoare1969axiomatic,
+  title={An axiomatic basis for computer programming},
+  author={Hoare, Charles Antony Richard},
+  journal={Communications of the ACM},
+  volume={12},
+  number={10},
+  pages={576--580},
+  year={1969},
+  publisher={ACM New York, NY, USA}
+}
+
+@InProceedings{QPMC,
+author="Feng, Yuan
+and Hahn, Ernst Moritz
+and Turrini, Andrea
+and Zhang, Lijun",
+editor="Bj{\o}rner, Nikolaj
+and de Boer, Frank",
+title="QPMC: A Model Checker for Quantum Programs and Protocols",
+booktitle={International Symposium on Formal Methods},
+year="2015",
+publisher="Springer International Publishing",
+pages="265--272",
+doi          = {10.1007/978-3-319-19249-9\_17}
+}
+
+
+@article{d2006quantum,
+  title={Quantum weakest preconditions},
+  author={D'Hondt, Ellie and Panangaden, Prakash},
+  journal={Mathematical Structures in Computer Science},
+  volume={16},
+  number={3},
+  pages={429--451},
+  year={2006},
+  publisher={Cambridge University Press}
+}
+
+
+@inproceedings{dafny,
+  title={Dafny: An automatic program verifier for functional correctness},
+  author={Leino, K Rustan M},
+  booktitle={International conference on logic for programming artificial intelligence and reasoning},
+  pages={348--370},
+  year={2010},
+  organization={Springer}
+}
+@inproceedings{chen2023theory,
+  title={A Theory of Cartesian Arrays (with Applications in Quantum Circuit Verification)},
+  author={Chen, Yu-Fang and R{\"u}mmer, Philipp and Tsai, Wei-Lun},
+  booktitle={International Conference on Automated Deduction},
+  pages={170--189},
+  year={2023},
+  organization={Springer}
+}
+@article{framac,
+  title={Frama-C: A software analysis perspective},
+  author={Kirchner, Florent and Kosmatov, Nikolai and Prevosto, Virgile and Signoles, Julien and Yakobowski, Boris},
+  journal={Formal aspects of computing},
+  volume={27},
+  pages={573--609},
+  year={2015},
+  publisher={Springer}
+}
+@InProceedings{viper,
+  author       = {P. M\"uller and M. Schwerhoff and A. J. Summers},
+  title        = {Automatic Verification of Iterated Separating Conjunctions using Symbolic Execution},
+  booktitle    = {Computer Aided Verification (CAV)},
+  editor       = {S. Chaudhuri and A. Farzan},
+  volume       = {9779},
+  pages        = {405--425},
+  year         = {2016},
+  series       = {LNCS},
+  publisher    = {Springer-Verlag},
+  url = {http://link.springer.com/chapter/10.1007/978-3-319-41528-4_22},
+  urltext = {[Publisher]}
+}
+
+@article{FiliotTT10,
+  author       = {Emmanuel Filiot and
+                  Jean{-}Marc Talbot and
+                  Sophie Tison},
+  title        = {Tree Automata with Global Constraints},
+  journal      = {Int. J. Found. Comput. Sci.},
+  volume       = {21},
+  number       = {4},
+  pages        = {571--596},
+  year         = {2010},
+  url          = {https://doi.org/10.1142/S012905411000743X},
+  doi          = {10.1142/S012905411000743X},
+  timestamp    = {Sat, 05 Sep 2020 17:52:52 +0200},
+  biburl       = {https://dblp.org/rec/journals/ijfcs/FiliotTT10.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
+}
+
+@InProceedings{anticoli2016,
+author="Anticoli, Linda
+and Piazza, Carla
+and Taglialegne, Leonardo
+and Zuliani, Paolo",
+editor="Devitt, Simon
+and Lanese, Ivan",
+title="Towards Quantum Programs Verification: From Quipper Circuits to QPMC",
+booktitle="Reversible Computation",
+year="2016",
+publisher="Springer International Publishing",
+address="Cham",
+pages="213--219"
+}
+
+@inproceedings{rmc,
+  title={A survey of regular model checking},
+  author={Abdulla, Parosh Aziz and Jonsson, Bengt and Nilsson, Marcus and Saksena, Mayank},
+  booktitle={International Conference on Concurrency Theory},
+  pages={35--48},
+  year={2004},
+  organization={Springer}
+}
+
+@article{armc,
+  title={Abstract regular (tree) model checking},
+  author={Bouajjani, Ahmed and Habermehl, Peter and Rogalewicz, Adam and Vojnar, Tom{\'a}{\v{s}}},
+  journal={International Journal on Software Tools for Technology Transfer},
+  volume={14},
+  number={2},
+  pages={167--191},
+  year={2012},
+  publisher={Springer},
+  doi          = {10.1007/s10009-011-0205-y},
+}
+
+
+@inproceedings{feng2017model,
+  title={Model checking omega-regular properties for quantum Markov chains},
+  author={Feng, Yuan and Hahn, Ernst Moritz and Turrini, Andrea and Ying, Shenggang},
+  booktitle={28th International Conference on Concurrency Theory (CONCUR 2017)},
+  year={2017},
+  organization={Schloss Dagstuhl-Leibniz-Zentrum fuer Informatik},
+  doi          = {10.4230/LIPIcs.CONCUR.2017.35}
+}
+
+@book{ying2021modelb,
+  title={Model Checking Quantum Systems: Principles and Algorithms},
+  author={Ying, Mingsheng and Feng, Yuan},
+  year={2021},
+  publisher={Cambridge University Press}
+}
+
+@inproceedings{ying2021model,
+  title={Model Checking for Verification of Quantum Circuits},
+  author={Ying, Mingsheng},
+  booktitle={International Symposium on Formal Methods},
+  pages={23--39},
+  year={2021},
+  organization={Springer},
+  doi          = {10.1007/978-3-030-90870-6\_2}
+}
+
+@article{ying2014model,
+  title={Model-checking linear-time properties of quantum systems},
+  author={Ying, Mingsheng and Li, Yangjia and Yu, Nengkun and Feng, Yuan},
+  journal={ACM Transactions on Computational Logic (TOCL)},
+  volume={15},
+  number={3},
+  pages={1--31},
+  year={2014},
+  publisher={ACM New York, NY, USA},
+  doi          = {10.1145/2629680}
+}
+
+
+
+
+@inproceedings{perdrix2008quantum,
+  title={Quantum entanglement analysis based on abstract interpretation},
+  author={Perdrix, Simon},
+  booktitle={International Static Analysis Symposium},
+  pages={270--282},
+  year={2008},
+  organization={Springer},
+  doi          = {10.1007/978-3-540-69166-2\_18}
+}
+
+
+@inproceedings{yu2021quantum,
+  title={Quantum abstract interpretation},
+  author={Yu, Nengkun and Palsberg, Jens},
+  booktitle={Proceedings of the 42nd ACM SIGPLAN International Conference on Programming Language Design and Implementation},
+  pages={542--558},
+  year={2021},
+  doi= {10.1145/3453483.3454061},
+}
+
+
+@article{feng2021quantum,
+  title={Quantum {Hoare} logic with classical variables},
+  author={Feng, Yuan and Ying, Mingsheng},
+  journal={ACM Transactions on Quantum Computing},
+  volume={2},
+  number={4},
+  pages={1--43},
+  year={2021},
+  publisher={ACM New York, NY},
+  doi={10.1145/3456877}
+}
+
+
+@article{ying2012floyd,
+  title={Floyd-{Hoare} logic for quantum programs},
+  author={Ying, Mingsheng},
+  journal={ACM Transactions on Programming Languages and Systems (TOPLAS)},
+  volume={33},
+  number={6},
+  pages={1--49},
+  year={2012},
+  publisher={ACM New York, NY, USA},
+  doi          = {10.1145/2049706.2049708},
+}
+
+@inproceedings{liu2019formal,
+  title={Formal verification of quantum algorithms using quantum {Hoare} logic},
+  author={Liu, Junyi and Zhan, Bohua and Wang, Shuling and Ying, Shenggang and Liu, Tao and Li, Yangjia and Ying, Mingsheng and Zhan, Naijun},
+  booktitle={International conference on computer aided verification},
+  pages={187--207},
+  year={2019},
+  organization={Springer},
+  doi= {10.1007/978-3-030-25543-5\_12}
+}
+
+@inproceedings{zhou2019applied,
+  title={An applied quantum {Hoare} logic},
+  author={Zhou, Li and Yu, Nengkun and Ying, Mingsheng},
+  booktitle={Proceedings of the 40th ACM SIGPLAN Conference on Programming Language Design and Implementation},
+  pages={1149--1162},
+  year={2019},
+  doi= {10.1145/3314221.3314584}
+}
+
+
+
+
+@misc{ThibaultG20,
+    title={Ordered Functional Decision Diagrams},
+    author={Joan Thibault and Khalil Ghorbal},
+    year={2020},
+    eprint={2003.09340},
+    archivePrefix={arXiv},
+    primaryClass={cs.LO}
+}
+
+@inproceedings{vanDijkWM17,
+  author={T. {van Dijk} and R. {Wille} and R. {Meolic}},
+  booktitle={2017 Formal Methods in Computer Aided Design (FMCAD)}, 
+  title={Tagged {BDDs}: Combining reduction rules from different decision diagram types}, 
+  year={2017},
+  volume={},
+  number={},
+  pages={108-115},
+  publisher={IEEE},
+  doi={10.23919/FMCAD.2017.8102248}
+}
+
+@inproceedings{Bryant18,
+  author    = {Randal E. Bryant},
+  editor    = {Dirk Beyer and
+               Marieke Huisman},
+  title     = {Chain Reduction for Binary and Zero-Suppressed Decision Diagrams},
+  booktitle = {Tools and Algorithms for the Construction and Analysis of Systems
+							 - 24th International Conference, {TACAS} 2018, Thessaloniki,
+Greece, April 14-20, 2018, Proceedings, Part {I}},
+  series    = {LNCS},
+  volume    = {10805},
+  pages     = {81--98},
+  publisher = {Springer},
+  year      = {2018},
+  url       = {https://doi.org/10.1007/978-3-319-89960-2\_5},
+  doi       = {10.1007/978-3-319-89960-2\_5},
+  timestamp = {Fri, 31 Jan 2020 21:32:25 +0100},
+  biburl    = {https://dblp.org/rec/conf/tacas/Bryant18.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+@inproceedings{BabarJCM19,
+  author    = {Junaid Babar and
+               Chuan Jiang and
+               Gianfranco Ciardo and
+               Andrew S. Miner},
+  editor    = {Tom{\'{a}}\v{s} Vojnar and
+               Lijun Zhang},
+  title     = {Binary Decision Diagrams with Edge-Specified Reductions},
+  booktitle = {Tools and Algorithms for the Construction and Analysis of Systems
+							 - 25th International Conference, {TACAS} 2019, Prague, Czech
+               Republic, April 6-11, 2019, Proceedings, Part {II}},
+  series    = {LNCS},
+  volume    = {11428},
+  pages     = {303--318},
+  publisher = {Springer},
+  year      = {2019},
+  url       = {https://doi.org/10.1007/978-3-030-17465-1\_17},
+  doi       = {10.1007/978-3-030-17465-1\_17},
+  timestamp = {Fri, 31 Jan 2020 21:32:25 +0100},
+  biburl    = {https://dblp.org/rec/conf/tacas/BabarJCM19.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+@article{Bryant86,
+  author    = {Randal E. Bryant},
+  title     = {Graph-Based Algorithms for {Boolean} Function Manipulation},
+  journal   = {{IEEE} Trans. Computers},
+  volume    = {35},
+  number    = {8},
+  pages     = {677--691},
+  year      = {1986},
+  url       = {https://doi.org/10.1109/TC.1986.1676819},
+  doi       = {10.1109/TC.1986.1676819},
+  timestamp = {Wed, 14 Nov 2018 10:48:32 +0100},
+  biburl    = {https://dblp.org/rec/journals/tc/Bryant86.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+@inproceedings{Minato93,
+  author    = {Shin{-}ichi Minato},
+  editor    = {Alfred E. Dunlop},
+  title     = {Zero-Suppressed {BDDs} for Set Manipulation in Combinatorial Problems},
+  booktitle = {Proceedings of the 30th Design Automation Conference. Dallas, Texas,
+               USA, June 14-18, 1993},
+  pages     = {272--277},
+  publisher = {{ACM} Press},
+  year      = {1993},
+  url       = {https://doi.org/10.1145/157485.164890},
+  doi       = {10.1145/157485.164890},
+  timestamp = {Tue, 06 Nov 2018 16:58:15 +0100},
+  biburl    = {https://dblp.org/rec/conf/dac/Minato93.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+@inproceedings{TsaiJJ21,
+  author    = {Yuan{-}Hung Tsai and
+               Jie{-}Hong R. Jiang and
+               Chiao{-}Shan Jhang},
+  title     = {Bit-Slicing the {Hilbert} Space: Scaling Up Accurate Quantum Circuit
+               Simulation},
+  booktitle = {58th {ACM/IEEE} Design Automation Conference, {DAC} 2021, San Francisco,
+               CA, USA, December 5-9, 2021},
+  pages     = {439--444},
+  publisher = {{IEEE}},
+  year      = {2021},
+  url       = {https://doi.org/10.1109/DAC18074.2021.9586191},
+  doi       = {10.1109/DAC18074.2021.9586191},
+  timestamp = {Fri, 12 Nov 2021 12:32:28 +0100},
+  biburl    = {https://dblp.org/rec/conf/dac/TsaiJJ21.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+@article{AruteABBBBB2019,
+	title = {Quantum supremacy using a programmable superconducting processor},
+	volume = {574},
+	copyright = {2019 The Author(s), under exclusive licence to Springer Nature Limited},
+	issn = {1476-4687},
+	url = {https://www.nature.com/articles/s41586-019-1666-5},
+	doi = {10.1038/s41586-019-1666-5},
+	language = {en},
+	number = {7779},
+	urldate = {2022-06-23},
+	journal = {Nature},
+	author = {Arute, Frank and others},
+	month = oct,
+	year = {2019},
+	note = {Number: 7779
+Publisher: Nature Publishing Group},
+	keywords = {Quantum information, Quantum physics},
+	pages = {505--510},
+}
+  
+@inproceedings{Shor94,
+  author    = {Peter W. Shor},
+  title     = {Algorithms for Quantum Computation: Discrete Logarithms and Factoring},
+  booktitle = {35th Annual Symposium on Foundations of Computer Science, Santa Fe,
+               New Mexico, USA, 20-22 November 1994},
+  pages     = {124--134},
+  publisher = {{IEEE} Computer Society},
+  year      = {1994},
+  url       = {https://doi.org/10.1109/SFCS.1994.365700},
+  doi       = {10.1109/SFCS.1994.365700},
+  timestamp = {Wed, 16 Oct 2019 14:14:54 +0200},
+  biburl    = {https://dblp.org/rec/conf/focs/Shor94.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+@article{EttingerHK04,
+  author    = {Mark Ettinger and
+               Peter H{\o}yer and
+               Emanuel Knill},
+  title     = {The quantum query complexity of the hidden subgroup problem is polynomial},
+  journal   = {Inf. Process. Lett.},
+  volume    = {91},
+  number    = {1},
+  pages     = {43--48},
+  year      = {2004},
+  url       = {https://doi.org/10.1016/j.ipl.2004.01.024},
+  doi       = {10.1016/j.ipl.2004.01.024},
+  timestamp = {Sun, 02 Jun 2019 21:07:01 +0200},
+  biburl    = {https://dblp.org/rec/journals/ipl/EttingerHK04.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+@inproceedings{BernsteinV93,
+  author    = {Ethan Bernstein and
+               Umesh V. Vazirani},
+  editor    = {S. Rao Kosaraju and
+               David S. Johnson and
+               Alok Aggarwal},
+  title     = {Quantum complexity theory},
+  booktitle = {Proceedings of the Twenty-Fifth Annual {ACM} Symposium on Theory of
+               Computing, May 16-18, 1993, San Diego, CA, {USA}},
+  pages     = {11--20},
+  publisher = {{ACM}},
+  year      = {1993},
+  url       = {https://doi.org/10.1145/167088.167097},
+  doi       = {10.1145/167088.167097},
+  timestamp = {Wed, 14 Nov 2018 10:51:36 +0100},
+  biburl    = {https://dblp.org/rec/conf/stoc/BernsteinV93.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+@inproceedings{WilleMN19,
+  author    = {Robert Wille and
+               Rod Van Meter and
+               Yehuda Naveh},
+  editor    = {J{\"{u}}rgen Teich and
+               Franco Fummi},
+  title     = {{IBM}'s Qiskit Tool Chain: Working with and Developing for Real Quantum
+               Computers},
+  booktitle = {Design, Automation {\&} Test in Europe Conference {\&} Exhibition,
+               {DATE} 2019, Florence, Italy, March 25-29, 2019},
+  pages     = {1234--1240},
+  publisher = {{IEEE}},
+  year      = {2019},
+  url       = {https://doi.org/10.23919/DATE.2019.8715261},
+  doi       = {10.23919/DATE.2019.8715261},
+  timestamp = {Wed, 16 Oct 2019 14:14:53 +0200},
+  biburl    = {https://dblp.org/rec/conf/date/WilleMN19.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+@inproceedings{AltenkirchG05,
+  author    = {Thorsten Altenkirch and
+               Jonathan Grattage},
+  title     = {A Functional Quantum Programming Language},
+  booktitle = {20th {IEEE} Symposium on Logic in Computer Science {(LICS} 2005),
+               26-29 June 2005, Chicago, IL, USA, Proceedings},
+  pages     = {249--258},
+  publisher = {{IEEE} Computer Society},
+  year      = {2005},
+  url       = {https://doi.org/10.1109/LICS.2005.1},
+  doi       = {10.1109/LICS.2005.1},
+  timestamp = {Wed, 16 Oct 2019 14:14:54 +0200},
+  biburl    = {https://dblp.org/rec/conf/lics/AltenkirchG05.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+@inproceedings{GreenLRSV13,
+  author    = {Alexander S. Green and
+               Peter LeFanu Lumsdaine and
+               Neil J. Ross and
+               Peter Selinger and
+               Beno{\^{\i}}t Valiron},
+  editor    = {Hans{-}Juergen Boehm and
+               Cormac Flanagan},
+  title     = {Quipper: a scalable quantum programming language},
+  booktitle = {{ACM} {SIGPLAN} Conference on Programming Language Design and Implementation,
+               {PLDI} '13, Seattle, WA, USA, June 16-19, 2013},
+  pages     = {333--342},
+  publisher = {{ACM}},
+  year      = {2013},
+  url       = {https://doi.org/10.1145/2491956.2462177},
+  doi       = {10.1145/2491956.2462177},
+  timestamp = {Thu, 14 Oct 2021 09:58:34 +0200},
+  biburl    = {https://dblp.org/rec/conf/pldi/GreenLRSV13.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+@inproceedings{TaoSYLJCCG22,
+  author    = {Runzhou Tao and
+               Yunong Shi and
+               Jianan Yao and
+               Xupeng Li and
+               Ali Javadi{-}Abhari and
+               Andrew W. Cross and
+               Frederic T. Chong and
+               Ronghui Gu},
+  editor    = {Ranjit Jhala and
+               Isil Dillig},
+  title     = {Giallar: push-button verification for the qiskit Quantum compiler},
+  booktitle = {{PLDI} '22: 43rd {ACM} {SIGPLAN} International Conference on Programming
+               Language Design and Implementation, San Diego, CA, USA, June 13 -
+               17, 2022},
+  pages     = {641--656},
+  publisher = {{ACM}},
+  year      = {2022},
+  url       = {https://doi.org/10.1145/3519939.3523431},
+  doi       = {10.1145/3519939.3523431},
+  timestamp = {Fri, 03 Jun 2022 08:42:34 +0200},
+  biburl    = {https://dblp.org/rec/conf/pldi/TaoSYLJCCG22.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+@article{WeckerS14,
+  author    = {Dave Wecker and
+               Krysta M. Svore},
+  title     = {LIQUi{\(\vert\)}{\textgreater}: {A} Software Design Architecture and
+               Domain-Specific Language for Quantum Computing},
+  journal   = {CoRR},
+  volume    = {abs/1402.4467},
+  year      = {2014},
+  url       = {http://arxiv.org/abs/1402.4467},
+  eprinttype = {arXiv},
+  eprint    = {1402.4467},
+  timestamp = {Mon, 13 Aug 2018 16:48:29 +0200},
+  biburl    = {https://dblp.org/rec/journals/corr/WeckerS14.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+@article{PednaultGNHMSDHW17,
+  author    = {Edwin Pednault and
+               John A. Gunnels and
+               Giacomo Nannicini and
+               Lior Horesh and
+               Thomas Magerlein and
+               Edgar Solomonik and
+               Erik W. Draeger and
+               Eric T. Holland and
+               Robert Wisnieff},
+  title     = {Pareto-Efficient Quantum Circuit Simulation Using Tensor
+               Contraction Deferral},
+  journal   = {CoRR},
+  volume    = {abs/1710.05867},
+  year      = {2017},
+  url       = {http://arxiv.org/abs/1710.05867},
+  eprinttype = {arXiv},
+}
+
+@book{ViamontesMH09,
+  author    = {George F. Viamontes and
+               Igor L. Markov and
+               John P. Hayes},
+  title     = {Quantum Circuit Simulation},
+  publisher = {Springer},
+  year      = {2009},
+  url       = {https://doi.org/10.1007/978-90-481-3065-8},
+  doi       = {10.1007/978-90-481-3065-8},
+  isbn      = {978-90-481-3064-1},
+  timestamp = {Tue, 16 May 2017 14:01:33 +0200},
+  biburl    = {https://dblp.org/rec/books/daglib/0027785.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+@inproceedings{Samoladas08,
+  author    = {Vasilis Samoladas},
+  editor    = {Dan Halperin and
+               Kurt Mehlhorn},
+  title     = {Improved {BDD} Algorithms for the Simulation of Quantum Circuits},
+  booktitle = {Algorithms - {ESA} 2008, 16th Annual European Symposium, Karlsruhe,
+               Germany, September 15-17, 2008. Proceedings},
+  series    = {LNCS},
+  volume    = {5193},
+  pages     = {720--731},
+  publisher = {Springer},
+  year      = {2008},
+  url       = {https://doi.org/10.1007/978-3-540-87744-8\_60},
+  doi       = {10.1007/978-3-540-87744-8\_60},
+  timestamp = {Sun, 02 Jun 2019 21:14:36 +0200},
+  biburl    = {https://dblp.org/rec/conf/esa/Samoladas08.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+@inproceedings{ZulehnerHW19,
+  author    = {Alwin Zulehner and
+               Stefan Hillmich and
+               Robert Wille},
+  editor    = {David Z. Pan},
+  title     = {How to Efficiently Handle Complex Values? Implementing Decision Diagrams
+               for Quantum Computing},
+  booktitle = {Proceedings of the International Conference on Computer-Aided Design,
+               {ICCAD} 2019, Westminster, CO, USA, November 4-7, 2019},
+  pages     = {1--7},
+  publisher = {{ACM}},
+  year      = {2019},
+  url       = {https://doi.org/10.1109/ICCAD45719.2019.8942057},
+  doi       = {10.1109/ICCAD45719.2019.8942057},
+  timestamp = {Tue, 24 Mar 2020 16:36:51 +0100},
+  biburl    = {https://dblp.org/rec/conf/iccad/ZulehnerHW19.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+@article{ZulehnerW19,
+  author    = {Alwin Zulehner and
+               Robert Wille},
+  title     = {Advanced Simulation of Quantum Computations},
+  journal   = {{IEEE} Trans. Comput. Aided Des. Integr. Circuits Syst.},
+  volume    = {38},
+  number    = {5},
+  pages     = {848--859},
+  year      = {2019},
+  url       = {https://doi.org/10.1109/TCAD.2018.2834427},
+  doi       = {10.1109/TCAD.2018.2834427},
+  timestamp = {Thu, 24 Sep 2020 11:26:59 +0200},
+  biburl    = {https://dblp.org/rec/journals/tcad/ZulehnerW19.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+@article{NiemannWMTD16,
+  author    = {Philipp Niemann and
+               Robert Wille and
+               D. Michael Miller and
+               Mitchell A. Thornton and
+               Rolf Drechsler},
+  title     = {{QMDDs}: Efficient Quantum Function Representation and Manipulation},
+  journal   = {{IEEE} Trans. Comput. Aided Des. Integr. Circuits Syst.},
+  volume    = {35},
+  number    = {1},
+  pages     = {86--99},
+  year      = {2016},
+  url       = {https://doi.org/10.1109/TCAD.2015.2459034},
+  doi       = {10.1109/TCAD.2015.2459034},
+  timestamp = {Tue, 24 Nov 2020 17:33:19 +0100},
+  biburl    = {https://dblp.org/rec/journals/tcad/NiemannWMTD16.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+@article{BiamonteWPRWL17,
+  author    = {Jacob D. Biamonte and
+               Peter Wittek and
+               Nicola Pancotti and
+               Patrick Rebentrost and
+               Nathan Wiebe and
+               Seth Lloyd},
+  title     = {Quantum machine learning},
+  journal   = {Nature},
+  volume    = {549},
+  number    = {7671},
+  pages     = {195--202},
+  year      = {2017},
+  url       = {https://doi.org/10.1038/nature23474},
+  doi       = {10.1038/nature23474},
+  timestamp = {Sat, 05 Sep 2020 17:48:37 +0200},
+  biburl    = {https://dblp.org/rec/journals/nature/BiamonteWPRWL17.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+@inproceedings{ChenJH22,
+  author       = {Tian{-}Fu Chen and
+                  Jie{-}Hong R. Jiang and
+                  Min{-}Hsiu Hsieh},
+  title        = {Partial Equivalence Checking of Quantum Circuits},
+  booktitle    = {{IEEE} International Conference on Quantum Computing and Engineering,
+                  {QCE} 2022, Broomfield, CO, USA, September 18-23, 2022},
+  pages        = {594--604},
+  publisher    = {{IEEE}},
+  year         = {2022},
+  url          = {https://doi.org/10.1109/QCE53715.2022.00082},
+  doi          = {10.1109/QCE53715.2022.00082},
+  timestamp    = {Tue, 21 Mar 2023 21:01:29 +0100},
+  biburl       = {https://dblp.org/rec/conf/qce/ChenJH22.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
+}
+
+@article{CilibertoHIPRSW18,
+	author = {Carlo Ciliberto and
+            Mark Herbster and
+            Alessandro Davide Ialongo and
+            Massimiliano Pontil and
+            Andrea Rocchetto and
+            Simone Severini and
+            Leonard Wossnig},
+  title = {Quantum Machine Learning: A Classical Perspective},
+  journal = {Proceedings of the Royal Society A: Mathematical, Physical and Engineering Sciences},
+  volume = {474},
+  number = {2209},
+  month  = {January},
+  year = {2018},
+  doi={10.1098/rspa.2017.0551}
+}
+
+@misc{KerenidisP16,
+  author = {Kerenidis, Iordanis and Prakash, Anupam},
+  doi = {10.48550/arxiv.1603.08675},
+  url = {https://arxiv.org/abs/1603.08675},
+  title = {Quantum Recommendation Systems},
+  publisher = {arXiv},
+  year = {2016},
+  copyright = {Creative Commons Attribution 4.0 International}
+}
+
+@article{CaoRO19,
+author = {Cao, Yudong and Romero, Jonathan and Olson, Jonathan P. and Degroote, Matthias and Johnson, Peter D. and Kieferová, Mária and Kivlichan, Ian D. and Menke, Tim and Peropadre, Borja and Sawaya, Nicolas P. D. and Sim, Sukin and Veis, Libor and Aspuru-Guzik, Alán},
+title = {Quantum Chemistry in the Age of Quantum Computing},
+journal = {Chemical Reviews},
+volume = {119},
+number = {19},
+pages = {10856-10915},
+year = {2019},
+doi = {10.1021/acs.chemrev.8b00803},
+    note ={PMID: 31469277},
+URL = { https://doi.org/10.1021/acs.chemrev.8b00803 },
+eprint = { https://doi.org/10.1021/acs.chemrev.8b00803 }
+}
+
+@article{Moll18,
+	doi = {10.1088/2058-9565/aab822},
+	url = {https://doi.org/10.1088/2058-9565/aab822},
+	year = 2018,
+	month = {jun},
+	publisher = {{IOP} Publishing},
+	volume = {3},
+	number = {3},
+	pages = {030503},
+	author = {Nikolaj Moll and Panagiotis Barkoutsos and Lev S Bishop and Jerry M Chow and Andrew Cross and Daniel J Egger and Stefan Filipp and Andreas Fuhrer and Jay M Gambetta and Marc Ganzhorn and Abhinav Kandala and Antonio Mezzacapo and Peter Müller and Walter Riess and Gian Salis and John Smolin and Ivano Tavernelli and Kristan Temme},
+	title = {Quantum optimization using variational algorithms on near-term quantum devices},
+	journal = {Quantum Science and Technology},
+}
+
+@inproceedings{Grover96,
+  author    = {Lov K. Grover},
+  editor    = {Gary L. Miller},
+  title     = {A Fast Quantum Mechanical Algorithm for Database Search},
+  booktitle = {Proceedings of the Twenty-Eighth Annual {ACM} Symposium on the Theory
+               of Computing, Philadelphia, Pennsylvania, USA, May 22-24, 1996},
+  pages     = {212--219},
+  publisher = {{ACM}},
+  year      = {1996},
+  url       = {https://doi.org/10.1145/237814.237866},
+  doi       = {10.1145/237814.237866},
+  timestamp = {Mon, 26 Nov 2018 15:05:57 +0100},
+  biburl    = {https://dblp.org/rec/conf/stoc/Grover96.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+@book{NielsenC16,
+author = {Nielsen, Michael A. and Chuang, Isaac L.},
+title = {Quantum Computation and Quantum Information: 10th Anniversary Edition},
+year = {2011},
+isbn = {978-1-10-700217-3},
+publisher = {Cambridge University Press},
+address = {USA},
+edition = {10th},
+abstract = {One of the most cited books in physics of all time, Quantum Computation and Quantum Information remains the best textbook in this exciting field of science. This 10th anniversary edition includes an introduction from the authors setting the work in context. This comprehensive textbook describes such remarkable effects as fast quantum algorithms, quantum teleportation, quantum cryptography and quantum error-correction. Quantum mechanics and computer science are introduced before moving on to describe what a quantum computer is, how it can be used to solve problems faster than 'classical' computers and its real-world implementation. It concludes with an in-depth treatment of quantum information. Containing a wealth of figures and exercises, this well-known textbook is ideal for courses on the subject, and will interest beginning graduate students and researchers in physics, computer science, mathematics, and electrical engineering.}
+}
+
+@article{BoykinMPRV00,
+  author    = {P. Oscar Boykin and
+               Tal Mor and
+               Matthew Pulver and
+               Vwani P. Roychowdhury and
+               Farrokh Vatan},
+  title     = {A new universal and fault-tolerant quantum basis},
+  journal   = {Inf. Process. Lett.},
+  volume    = {75},
+  number    = {3},
+  pages     = {101--107},
+  year      = {2000},
+  url       = {https://doi.org/10.1016/S0020-0190(00)00084-3},
+  doi       = {10.1016/S0020-0190(00)00084-3},
+  timestamp = {Fri, 26 May 2017 22:54:43 +0200},
+  biburl    = {https://dblp.org/rec/journals/ipl/BoykinMPRV00.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+@misc{Aharonov03,
+  doi = {10.48550/arxiv.quant-ph/0301040},
+  url = {https://arxiv.org/abs/quant-ph/0301040},
+  author = {Aharonov, Dorit},
+  keywords = {Quantum Physics (quant-ph), FOS: Physical sciences, FOS: Physical sciences},
+  title = {A Simple Proof that Toffoli and Hadamard are Quantum Universal},
+  publisher = {arXiv},
+  year = {2003},
+}
+
+@misc{GMP,
+  url = {https://gmplib.org/},
+  title = {{GMP}: The {GNU} Multiple Precision Arithmetic Library},
+  year = {2022}
+}
+
+@Incollection{MateusRSS09,
+  place={Cambridge},
+  title={Temporal Logics for Reasoning about Quantum Systems},
+  DOI={10.1017/CBO9781139193313.011},
+  booktitle={Semantic Techniques in Quantum Computation},
+  publisher={Cambridge University Press},
+  author={Mateus, Paulo and
+          Ramos, Jaime and
+          Sernadas, Amílcar and
+          Sernadas, Cristina},
+  editor={Gay, Simon and Mackie, IanEditors},
+  year={2009},
+  pages={389–413}
+}
+
+@article{XuFMD22,
+  author    = {Ming Xu and
+               Jianling Fu and
+               Jingyi Mei and
+               Yuxin Deng},
+  title     = {Model checking {QCTL} plus on quantum {Markov} chains},
+  journal   = {Theor. Comput. Sci.},
+  volume    = {913},
+  pages     = {43--72},
+  year      = {2022},
+  url       = {https://doi.org/10.1016/j.tcs.2022.01.044},
+  doi       = {10.1016/j.tcs.2022.01.044},
+  timestamp = {Thu, 23 Jun 2022 20:00:56 +0200},
+  biburl    = {https://dblp.org/rec/journals/tcs/XuFMD22.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+@article{Kissinger_2022,
+doi = {10.1088/2058-9565/ac5d20},
+url = {https://dx.doi.org/10.1088/2058-9565/ac5d20},
+year = {2022},
+month = {jul},
+publisher = {IOP Publishing},
+volume = {7},
+number = {4},
+pages = {044001},
+author = {Kissinger, Aleks and van de Wetering, John},
+title = {Simulating quantum circuits with ZX-calculus reduced stabiliser decompositions},
+journal = {Quantum Science and Technology},
+abstract = {We introduce an enhanced technique for strong classical simulation of quantum circuits which combines the ‘sum-of-stabilisers’ method with an automated simplification strategy based on the ZX-calculus. Recently it was shown that quantum circuits can be classically simulated by expressing the non-stabiliser gates in a circuit as magic state injections and decomposing them in chunks of 2–6 states at a time, obtaining sums of (efficiently-simulable) stabiliser states with many fewer terms than the naive approach. We adapt these techniques from the original setting of Clifford circuits with magic state injection to generic ZX-diagrams and show that, by interleaving this ‘chunked’ decomposition with a ZX-calculus-based simplification strategy, we can obtain stabiliser decompositions that are many orders of magnitude smaller than existing approaches. We illustrate this technique to perform exact norm calculations (and hence strong simulation) on the outputs of random 50- and 100-qubit Clifford + T circuits with up to 70 T-gates as well as a family of hidden shift circuits previously considered by Bravyi and Gosset with over 1000 T-gates.}
+}
+
+@inproceedings{MeiBonsangueLaarman2024Sim,
+  author    = {Jingyi Mei and Marcello Bonsangue and Alfons Laarman},
+  title     = {Simulating quantum circuits by model counting},
+  booktitle = {Computer Aided Verification},
+  publisher = {Springer Nature Switzerland},
+  year      = {2024}
+}
+@inproceedings{MeiCoopmansLaarman2024Eq,
+  author    = {Jingyi Mei and Tim Coopmans and Marcello Bonsangue and Alfons Laarman},
+  title     = {Equivalence checking of quantum circuits by model counting},
+  booktitle = {Automated Reasoning},
+  pages     = {401--421},
+  publisher = {Springer},
+  year      = {2024}
+}
+@article{HanssonJ94,
+  author    = {Hans Hansson and
+               Bengt Jonsson},
+  title     = {A Logic for Reasoning about Time and Reliability},
+  journal   = {Formal Aspects Comput.},
+  volume    = {6},
+  number    = {5},
+  pages     = {512--535},
+  year      = {1994},
+  url       = {https://doi.org/10.1007/BF01211866},
+  doi       = {10.1007/BF01211866},
+  timestamp = {Mon, 09 May 2022 16:20:12 +0200},
+  biburl    = {https://dblp.org/rec/journals/fac/HanssonJ94.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+@article{FengYY13,
+  author    = {Yuan Feng and
+               Nengkun Yu and
+               Mingsheng Ying},
+  title     = {Model checking quantum {Markov} chains},
+  journal   = {J. Comput. Syst. Sci.},
+  volume    = {79},
+  number    = {7},
+  pages     = {1181--1198},
+  year      = {2013},
+  url       = {https://doi.org/10.1016/j.jcss.2013.04.002},
+  doi       = {10.1016/j.jcss.2013.04.002},
+  timestamp = {Tue, 16 Feb 2021 14:04:38 +0100},
+  biburl    = {https://dblp.org/rec/journals/jcss/FengYY13.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+@inproceedings{AnticoliPTZ16,
+  author    = {Linda Anticoli and
+               Carla Piazza and
+               Leonardo Taglialegne and
+               Paolo Zuliani},
+  editor    = {Simon J. Devitt and
+               Ivan Lanese},
+  title     = {Towards Quantum Programs Verification: From {Quipper} Circuits to {QPMC}},
+  booktitle = {Reversible Computation - 8th International Conference, {RC} 2016,
+               Bologna, Italy, July 7-8, 2016, Proceedings},
+  series    = {LNCS},
+  volume    = {9720},
+  pages     = {213--219},
+  publisher = {Springer},
+  year      = {2016},
+  url       = {https://doi.org/10.1007/978-3-319-40578-0\_16},
+  doi       = {10.1007/978-3-319-40578-0\_16},
+  timestamp = {Tue, 14 May 2019 10:00:38 +0200},
+  biburl    = {https://dblp.org/rec/conf/rc/AnticoliPTZ16.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+@inproceedings{AbdullaBHKV08,
+  author    = {Parosh Aziz Abdulla and
+               Ahmed Bouajjani and
+               Luk{\'{a}}s Hol{\'{\i}}k and
+               Lisa Kaati and
+               Tom{\'{a}}s Vojnar},
+  editor    = {C. R. Ramakrishnan and
+               Jakob Rehof},
+  title     = {Computing Simulations over Tree Automata},
+  booktitle = {Tools and Algorithms for the Construction and Analysis of Systems,
+               14th International Conference, {TACAS} 2008,
+               Budapest, Hungary, March 29-April 6, 2008. Proceedings},
+  series    = {LNCS},
+  volume    = {4963},
+  pages     = {93--108},
+  publisher = {Springer},
+  year      = {2008},
+  url       = {https://doi.org/10.1007/978-3-540-78800-3\_8},
+  doi       = {10.1007/978-3-540-78800-3\_8},
+  timestamp = {Sun, 25 Oct 2020 22:56:39 +0100},
+  biburl    = {https://dblp.org/rec/conf/tacas/AbdullaBHKV08.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+@article{AbdullaHK07,
+  author    = {Parosh Aziz Abdulla and
+               Johanna H{\"{o}}gberg and
+               Lisa Kaati},
+  title     = {Bisimulation Minimization of Tree Automata},
+  journal   = {Int. J. Found. Comput. Sci.},
+  volume    = {18},
+  number    = {4},
+  pages     = {699--713},
+  year      = {2007},
+  url       = {https://doi.org/10.1142/S0129054107004929},
+  doi       = {10.1142/S0129054107004929},
+  timestamp = {Sat, 27 May 2017 14:23:38 +0200},
+  biburl    = {https://dblp.org/rec/journals/ijfcs/AbdullaHK07.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+@INPROCEEDINGS{WGT+:2008,
+  AUTHOR    = {R. Wille and
+               D. Gro{\ss}e and
+               L. Teuber and
+               G. W. Dueck and
+               R. Drechsler},
+  TITLE     = {{RevLib}: An Online Resource for 
+               Reversible Functions and Reversible Circuits},
+  BOOKTITLE = {{Int'l Symp. on Multi-Valued Logic}},
+  PAGES     = {220--225},
+  YEAR      = {2008},
+  note      = {{RevLib} is available at http://www.revlib.org},
+  doi          = {10.1109/ISMVL.2008.43}
+}
+
+@misc{https://doi.org/10.48550/arxiv.1707.03429,
+  doi = {10.48550/arxiv.1707.03429},
+  url = {https://arxiv.org/abs/1707.03429},
+  author = {Cross, Andrew W. and Bishop, Lev S. and Smolin, John A. and Gambetta, Jay M.},
+  keywords = {Quantum Physics (quant-ph), FOS: Physical sciences, FOS: Physical sciences},
+  title = {Open Quantum Assembly Language},
+  publisher = {arXiv},
+  year = {2017},
+  copyright = {arXiv.org perpetual, non-exclusive license}
+}
+
+@misc{Qiskit,
+    author = {MD SAJID ANIS and Abby-Mitchell and H{\'e}ctor Abraham and others},
+    title = {Qiskit: An Open-source Framework for Quantum Computing},
+    year = {2021},
+    doi = {10.5281/zenodo.2573505}
+}
+
+@inproceedings{AbdullaCHMV10,
+  author    = {Parosh Aziz Abdulla and
+               Yu{-}Fang Chen and
+               Luk{\'{a}}s Hol{\'{\i}}k and
+               Richard Mayr and
+               Tom{\'{a}}s Vojnar},
+  editor    = {Javier Esparza and
+               Rupak Majumdar},
+  title     = {When Simulation Meets Antichains},
+  booktitle = {Tools and Algorithms for the Construction and Analysis of Systems,
+               16th International Conference, {TACAS} 2010,
+               Paphos, Cyprus, March 20-28, 2010. Proceedings},
+  series    = {LNCS},
+  volume    = {6015},
+  pages     = {158--174},
+  publisher = {Springer},
+  year      = {2010},
+  url       = {https://doi.org/10.1007/978-3-642-12002-2\_14},
+  doi       = {10.1007/978-3-642-12002-2\_14},
+  timestamp = {Mon, 03 Jan 2022 17:11:32 +0100},
+  biburl    = {https://dblp.org/rec/conf/tacas/AbdullaCHMV10.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+@inproceedings{HolikLSV11,
+  author    = {Luk{\'{a}}s Hol{\'{\i}}k and
+               Ondrej Leng{\'{a}}l and
+               Jir{\'{\i}} Sim{\'{a}}cek and
+               Tom{\'{a}}s Vojnar},
+  editor    = {Tevfik Bultan and
+               Pao{-}Ann Hsiung},
+  title     = {Efficient Inclusion Checking on Explicit and Semi-symbolic Tree Automata},
+  booktitle = {Automated Technology for Verification and Analysis, 9th International
+               Symposium, {ATVA} 2011, Taipei, Taiwan, October 11-14, 2011. Proceedings},
+  series    = {LNCS},
+  volume    = {6996},
+  pages     = {243--258},
+  publisher = {Springer},
+  year      = {2011},
+  url       = {https://doi.org/10.1007/978-3-642-24372-1\_18},
+  doi       = {10.1007/978-3-642-24372-1\_18},
+  timestamp = {Sun, 25 Oct 2020 22:36:49 +0100},
+  biburl    = {https://dblp.org/rec/conf/atva/HolikLSV11.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+@inproceedings{BouajjaniHHTV08,
+  author    = {Ahmed Bouajjani and
+               Peter Habermehl and
+               Luk{\'{a}}s Hol{\'{\i}}k and
+               Tayssir Touili and
+               Tom{\'{a}}s Vojnar},
+  editor    = {Oscar H. Ibarra and
+               Bala Ravikumar},
+  title     = {Antichain-Based Universality and Inclusion Testing over Nondeterministic
+               Finite Tree Automata},
+  booktitle = {Implementation and Applications of Automata, 13th International Conference,
+               {CIAA} 2008, San Francisco, California, USA, July 21-24, 2008. Proceedings},
+  series    = {LNCS},
+  volume    = {5148},
+  pages     = {57--67},
+  publisher = {Springer},
+  year      = {2008},
+  url       = {https://doi.org/10.1007/978-3-540-70844-5\_7},
+  doi       = {10.1007/978-3-540-70844-5\_7},
+  timestamp = {Sun, 25 Oct 2020 22:53:59 +0100},
+  biburl    = {https://dblp.org/rec/conf/wia/BouajjaniHHTV08.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+@inproceedings{BouajjaniJNT00,
+  author    = {Ahmed Bouajjani and
+               Bengt Jonsson and
+               Marcus Nilsson and
+               Tayssir Touili},
+  editor    = {E. Allen Emerson and
+               A. Prasad Sistla},
+  title     = {Regular Model Checking},
+  booktitle = {Computer Aided Verification, 12th International Conference, {CAV}
+               2000, Chicago, IL, USA, July 15-19, 2000, Proceedings},
+  series    = {LNCS},
+  volume    = {1855},
+  pages     = {403--418},
+  publisher = {Springer},
+  year      = {2000},
+  url       = {https://doi.org/10.1007/10722167\_31},
+  doi       = {10.1007/10722167\_31},
+  timestamp = {Tue, 31 Aug 2021 12:07:10 +0200},
+  biburl    = {https://dblp.org/rec/conf/cav/BouajjaniJNT00.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+@inproceedings{NeiderJ13,
+  author    = {Daniel Neider and
+               Nils Jansen},
+  editor    = {Guillaume Brat and
+               Neha Rungta and
+               Arnaud Venet},
+  title     = {Regular Model Checking Using Solver Technologies and Automata Learning},
+  booktitle = {{NASA} Formal Methods, 5th International Symposium, {NFM} 2013, Moffett
+               Field, CA, USA, May 14-16, 2013. Proceedings},
+  series    = {LNCS},
+  volume    = {7871},
+  pages     = {16--31},
+  publisher = {Springer},
+  year      = {2013},
+  url       = {https://doi.org/10.1007/978-3-642-38088-4\_2},
+  doi       = {10.1007/978-3-642-38088-4\_2},
+  timestamp = {Tue, 14 May 2019 10:00:53 +0200},
+  biburl    = {https://dblp.org/rec/conf/nfm/NeiderJ13.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+@article{YuBI11,
+  author    = {Fang Yu and
+               Tevfik Bultan and
+               Oscar H. Ibarra},
+  title     = {Relational String Verification Using Multi-Track Automata},
+  journal   = {Int. J. Found. Comput. Sci.},
+  volume    = {22},
+  number    = {8},
+  pages     = {1909--1924},
+  year      = {2011},
+  url       = {https://doi.org/10.1142/S0129054111009112},
+  doi       = {10.1142/S0129054111009112},
+  timestamp = {Thu, 23 Dec 2021 10:30:13 +0100},
+  biburl    = {https://dblp.org/rec/journals/ijfcs/YuBI11.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+@article{Spector06,
+  author={Lee Spector},
+  title={Automatic Quantum Computer Programming: A Genetic Programming Approach},
+  publisher={Springer},
+  year={2006}
+}
+
+@inproceedings{MasseyCS05,
+  author    = {Paul Massey and
+               John A. Clark and
+               Susan Stepney},
+  editor    = {Hans{-}Georg Beyer and
+               Una{-}May O'Reilly},
+  title     = {Evolution of a human-competitive quantum fourier transform algorithm
+               using genetic programming},
+  booktitle = {Genetic and Evolutionary Computation Conference, {GECCO} 2005, Proceedings,
+               Washington DC, USA, June 25-29, 2005},
+  pages     = {1657--1663},
+  publisher = {{ACM}},
+  year      = {2005},
+  url       = {https://doi.org/10.1145/1068009.1068288},
+  doi       = {10.1145/1068009.1068288},
+  timestamp = {Tue, 06 Nov 2018 11:06:39 +0100},
+  biburl    = {https://dblp.org/rec/conf/gecco/MasseyCS05.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+@article{Janzing05,
+author = {Janzing, Dominik and Wocjan, Pawel and Beth, Thomas},
+title = {"Non-Identity-Check" Is {QMA}-complete},
+journal = {International Journal of Quantum Information},
+volume = {03},
+number = {03},
+pages = {463-473},
+year = {2005},
+doi = {10.1142/S0219749905001067},
+}
+
+@article{YamashitaM10,
+  author    = {Shigeru Yamashita and
+               Igor L. Markov},
+  title     = {Fast equivalence-checking for quantum circuits},
+  journal   = {Quantum Inf. Comput.},
+  volume    = {10},
+  number    = {9{\&}10},
+  pages     = {721--734},
+  year      = {2010},
+  url       = {https://doi.org/10.26421/QIC10.9-10-1},
+  doi       = {10.26421/QIC10.9-10-1},
+  timestamp = {Thu, 29 Apr 2021 18:05:35 +0200},
+  biburl    = {https://dblp.org/rec/journals/qic/YamashitaM10.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+@inproceedings{WeiTJJ22,
+  author    = {Chun{-}Yu Wei and
+               Yuan{-}Hung Tsai and
+               Chiao{-}Shan Jhang and
+               Jie{-}Hong R. Jiang},
+  editor    = {Rob Oshana},
+  title     = {Accurate {BDD}-based unitary operator manipulation for scalable and
+               robust quantum circuit verification},
+  booktitle = {{DAC} '22: 59th {ACM/IEEE} Design Automation Conference, San Francisco,
+               California, USA, July 10 - 14, 2022},
+  pages     = {523--528},
+  publisher = {{ACM}},
+  year      = {2022},
+  url       = {https://doi.org/10.1145/3489517.3530481},
+  doi       = {10.1145/3489517.3530481},
+  timestamp = {Thu, 25 Aug 2022 14:23:53 +0200},
+  biburl    = {https://dblp.org/rec/conf/dac/WeiTJJ22.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+@inproceedings{ViamontesMH07,
+  author    = {George F. Viamontes and
+               Igor L. Markov and
+               John P. Hayes},
+  editor    = {Georges G. E. Gielen},
+  title     = {Checking equivalence of quantum circuits and states},
+  booktitle = {2007 International Conference on Computer-Aided Design, {ICCAD} 2007,
+               San Jose, CA, USA, November 5-8, 2007},
+  pages     = {69--74},
+  publisher = {{IEEE} Computer Society},
+  year      = {2007},
+  url       = {https://doi.org/10.1109/ICCAD.2007.4397246},
+  doi       = {10.1109/ICCAD.2007.4397246},
+  timestamp = {Wed, 16 Oct 2019 14:14:49 +0200},
+  biburl    = {https://dblp.org/rec/conf/iccad/ViamontesMH07.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+@article{LivinskiiBR20,
+  author    = {Vsevolod Livinskii and
+               Dmitry Babokin and
+               John Regehr},
+  title     = {Random testing for {C} and {C++} compilers with {YARPGen}},
+  journal   = {Proc. {ACM} Program. Lang.},
+  volume    = {4},
+  number    = {{OOPSLA}},
+  pages     = {196:1--196:25},
+  year      = {2020},
+  url       = {https://doi.org/10.1145/3428264},
+  doi       = {10.1145/3428264},
+  timestamp = {Wed, 17 Feb 2021 08:53:59 +0100},
+  biburl    = {https://dblp.org/rec/journals/pacmpl/LivinskiiBR20.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+@inproceedings{BurgholzerKW21,
+  author    = {Lukas Burgholzer and
+               Richard Kueng and
+               Robert Wille},
+  title     = {Random Stimuli Generation for the Verification of Quantum Circuits},
+  booktitle = {{ASPDAC} '21: 26th Asia and South Pacific Design Automation Conference,
+               Tokyo, Japan, January 18-21, 2021},
+  pages     = {767--772},
+  publisher = {{ACM}},
+  year      = {2021},
+  url       = {https://doi.org/10.1145/3394885.3431590},
+  doi       = {10.1145/3394885.3431590},
+  timestamp = {Thu, 14 Oct 2021 10:45:36 +0200},
+  biburl    = {https://dblp.org/rec/conf/aspdac/BurgholzerKW21.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+@misc{Coppersmith02,
+  doi = {10.48550/arxiv.quant-ph/0201067},
+  url = {https://arxiv.org/abs/quant-ph/0201067},
+  author = {Coppersmith, D.},
+  title = {An approximate {Fourier} transform useful in quantum factoring},
+  publisher = {arXiv},
+  year = {2002},
+}
+
+@inproceedings{AbdullaJMd02,
+  author    = {Parosh Aziz Abdulla and
+               Bengt Jonsson and
+               Pritha Mahata and
+               Julien d'Orso},
+  title     = {Regular Tree Model Checking},
+  booktitle = {Computer Aided Verification, 14th International Conference, {CAV}
+               2002,Copenhagen, Denmark, July 27-31, 2002, Proceedings},
+  series    = {LNCS},
+  volume    = {2404},
+  pages     = {555--568},
+  publisher = {Springer},
+  year      = {2002},
+  url       = {https://doi.org/10.1007/3-540-45657-0\_47},
+  doi       = {10.1007/3-540-45657-0\_47},
+  timestamp = {Tue, 31 Aug 2021 12:07:10 +0200},
+  biburl    = {https://dblp.org/rec/conf/cav/AbdullaJMd02.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+@inproceedings{CousotC77,
+  author    = {Patrick Cousot and
+               Radhia Cousot},
+  editor    = {Robert M. Graham and
+               Michael A. Harrison and
+               Ravi Sethi},
+  title     = {Abstract Interpretation: {A} Unified Lattice Model for Static Analysis
+               of Programs by Construction or Approximation of Fixpoints},
+  booktitle = {Conference Record of the Fourth {ACM} Symposium on Principles of Programming
+               Languages, Los Angeles, California, USA, January 1977},
+  pages     = {238--252},
+  publisher = {{ACM}},
+  year      = {1977},
+  url       = {https://doi.org/10.1145/512950.512973},
+  doi       = {10.1145/512950.512973},
+  timestamp = {Tue, 06 Nov 2018 11:07:42 +0100},
+  biburl    = {https://dblp.org/rec/conf/popl/CousotC77.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+@inproceedings{FeltYBS93,
+  author    = {Eric Felt and
+               Gary York and
+               Robert K. Brayton and
+               Alberto L. Sangiovanni{-}Vincentelli},
+  title     = {Dynamic variable reordering for {BDD} minimization},
+  booktitle = {Proceedings of the European Design Automation Conference 1993, {EURO-DAC}
+               '93 with EURO-VHDL'93, Hamburg, Germany, September 20-24, 1993},
+  pages     = {130--135},
+  publisher = {{IEEE} Computer Society},
+  year      = {1993},
+  url       = {https://doi.org/10.1109/EURDAC.1993.410627},
+  doi       = {10.1109/EURDAC.1993.410627},
+  timestamp = {Wed, 16 Oct 2019 14:14:54 +0200},
+  biburl    = {https://dblp.org/rec/conf/eurodac/FeltYBS93.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+@article{BustanG03,
+  author    = {Doron Bustan and
+               Orna Grumberg},
+  title     = {Simulation-based minimazation},
+  journal   = {{ACM} Trans. Comput. Log.},
+  volume    = {4},
+  number    = {2},
+  pages     = {181--206},
+  year      = {2003},
+  url       = {https://doi.org/10.1145/635499.635502},
+  doi       = {10.1145/635499.635502},
+  timestamp = {Tue, 06 Nov 2018 12:51:53 +0100},
+  biburl    = {https://dblp.org/rec/journals/tocl/BustanG03.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+
+@article{DAntoniVLM15,
+  author    = {Loris D'Antoni and
+               Margus Veanes and
+               Benjamin Livshits and
+               David Molnar},
+  title     = {Fast: {A} Transducer-Based Language for Tree Manipulation},
+  journal   = {{ACM} Trans. Program. Lang. Syst.},
+  volume    = {38},
+  number    = {1},
+  pages     = {1:1--1:32},
+  year      = {2015},
+  url       = {https://doi.org/10.1145/2791292},
+  doi       = {10.1145/2791292},
+  timestamp = {Wed, 26 Aug 2020 11:04:56 +0200},
+  biburl    = {https://dblp.org/rec/journals/toplas/DAntoniVLM15.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+@misc{QCECbug,
+  url = {https://github.com/cda-tum/qcec/issues/200},
+  title = {The \qcec repository: Issue \#200 ({ZX-Checker} produces invalid result)},
+  year = {2022}
+}
+
+@software{artifact,
+  author       = {Parosh Aziz Abdulla and
+                  Yo{-}Ga Chen and
+                  Yu{-}Fang Chen and
+                  Lukáš Holík and
+                  Ondřej Lengál and
+                  Fang{-}Yi Lo
+                  Jyun{-}Ao Lin and
+                  Wei{-}Lun Tsai},
+  title        = {Verifying Quantum Circuits with Level-Synchronized Tree Automata (artifact)},
+  month        = oct,
+  year         = 2024,
+  publisher    = {Zenodo},
+  doi          = {10.5281/zenodo.13957472},
+  url          = {https://doi.org/10.5281/zenodo.13957472},
+  note         = {\url{https://doi.org/10.5281/zenodo.13957472}}
+}
+
+@Incollection{GreenbergerHZ89,
+author="Greenberger, Daniel M.
+and Horne, Michael A.
+and Zeilinger, Anton",
+editor="Kafatos, Menas",
+title="Going Beyond {Bell}'s Theorem",
+bookTitle="Bell's Theorem, Quantum Theory and Conceptions of the Universe",
+year="1989",
+publisher="Springer Netherlands",
+address="Dordrecht",
+pages="69--72",
+abstract="Bell's Theorem proved that one cannot in general reproduce the results of quantum theory with a classical, deterministic local model. However, Einstein originally considered the case where one could define an ``element of reality'', namely for the much simpler case where one could predict with certainty a definite outcome for an experiment For this simple case, Bell's Theorem says nothing. But by using a slightly more complicated model than Bell, one can show that even in this simple case where one can make definite predictions, one still cannot generally introduce deterministic, local models to explain the results.",
+isbn="978-94-017-0849-4",
+doi="10.1007/978-94-017-0849-4_10",
+url="https://doi.org/10.1007/978-94-017-0849-4_10"
+}
+
+@article{McArdleEA20,
+  title = {Quantum computational chemistry},
+  author = {McArdle, Sam and Endo, Suguru and Aspuru-Guzik, Al\'an and Benjamin, Simon C. and Yuan, Xiao},
+  journal = {Rev. Mod. Phys.},
+  volume = {92},
+  issue = {1},
+  pages = {015003},
+  numpages = {51},
+  year = {2020},
+  month = {Mar},
+  publisher = {American Physical Society},
+  doi = {10.1103/RevModPhys.92.015003},
+  url = {https://link.aps.org/doi/10.1103/RevModPhys.92.015003}
+}
+
+@article{ValahuOMNRMPYBHTK23,
+  author = {
+            Valahu, C. H. and
+            Olaya-Agudelo, V. C. and
+            MacDonell, R. J. and
+            Navickas, T. and
+            Rao, A. D. and
+            Millican, M. J. and
+            Pérez-Sánchez, J. B. and
+            Yuen-Zhou, J. and
+            Biercuk, M. J. and
+            Hempel, C. and
+            Tan, T. R. and
+            Kassal, I.},
+  title = {Direct observation of geometric-phase interference in dynamics around a conical intersection},
+  year = {2023},
+  journal = {Nature Chemistry},
+  pages = {1503--1508},
+  volume = {15},
+  issue = {11},
+  issn = {1755-4349},
+  url =  {https://doi.org/10.1038/s41557-023-01300-3},
+  doi = {10.1038/s41557-023-01300-3},
+}
+
+@article{Feynman82,
+  author = {Feynman, Richard P.},
+  year = {1982},
+  title = {Simulating physics with computers},
+  journal = {International Journal of Theoretical Physics},
+  pages = {467--488},
+  volume = {21},
+  issue = {6},
+  issn = {1572-9575},
+  url = {https://doi.org/10.1007/BF02650179},
+  doi = {10.1007/BF02650179}
+}
+
+@article{Stuart21,
+author = {Hadfield, Stuart},
+title = {On the Representation of {Boolean} and Real Functions as {Hamiltonians} for Quantum Computing},
+year = {2021},
+issue_date = {December 2021},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+volume = {2},
+number = {4},
+url = {https://doi.org/10.1145/3478519},
+doi = {10.1145/3478519},
+journal = {ACM Transactions on Quantum Computing},
+month = {dec},
+articleno = {18},
+numpages = {21},
+keywords = {Boolean and pseudo-Boolean functions, diagonal Hamiltonians, Quantum optimization, Fourier analysis on the Boolean cube}
+}
+
+@article{YordanovADB20,
+  title = {Efficient quantum circuits for quantum computational chemistry},
+  author = {Yordanov, Yordan S. and Arvidsson-Shukur, David R. M. and Barnes, Crispin H. W.},
+  journal = {Phys. Rev. A},
+  volume = {102},
+  issue = {6},
+  pages = {062612},
+  numpages = {7},
+  year = {2020},
+  month = {Dec},
+  publisher = {American Physical Society},
+  doi = {10.1103/PhysRevA.102.062612},
+  url = {https://link.aps.org/doi/10.1103/PhysRevA.102.062612}
+}
+@inproceedings{anticoli2016towards,
+  title={Towards quantum programs verification: from quipper circuits to QPMC},
+  author={Anticoli, Linda and Piazza, Carla and Taglialegne, Leonardo and Zuliani, Paolo},
+  booktitle={Reversible Computation: 8th International Conference, RC 2016, Bologna, Italy, July 7-8, 2016, Proceedings 8},
+  pages={213--219},
+  year={2016},
+  organization={Springer}
+}
+
+@inproceedings{BauerMarquartLS23,
+  author       = {Fabian Bauer{-}Marquart and
+                  Stefan Leue and
+                  Christian Schilling},
+  editor       = {Marsha Chechik and
+                  Joost{-}Pieter Katoen and
+                  Martin Leucker},
+  title        = {symQV: Automated Symbolic Verification of Quantum Programs},
+  booktitle    = {Formal Methods - 25th International Symposium, {FM} 2023, L{\"{u}}beck,
+                  Germany, March 6-10, 2023, Proceedings},
+  series       = {Lecture Notes in Computer Science},
+  volume       = {14000},
+  pages        = {181--198},
+  publisher    = {Springer},
+  year         = {2023},
+  url          = {https://doi.org/10.1007/978-3-031-27481-7\_12},
+  doi          = {10.1007/978-3-031-27481-7\_12},
+  timestamp    = {Sat, 11 Mar 2023 00:11:48 +0100},
+  biburl       = {https://dblp.org/rec/conf/fm/BauerMarquartLS23.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
+}
+
+
+@article{cacm25,
+author = {Chen, Yu-Fang and Chung, Kai-Min and Leng\'{a}l, Ond\v{r}ej and Lin, Jyun-Ao and Tsai, Wei-Lun and Yen, Di-De},
+title = {An Automata-Based Framework for Verification and Bug Hunting in Quantum Circuits},
+year = {2025},
+issue_date = {June 2025},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+volume = {68},
+number = {6},
+issn = {0001-0782},
+url = {https://doi.org/10.1145/3725728},
+doi = {10.1145/3725728},
+abstract = {As quantum computing hardware advances, the demand for scalable, precise, and fully automated verification techniques for quantum circuits grows. This paper introduces a novel automata-based framework tailored for the verification of quantum circuits. In our approach, the problem is framed as a triple {P}C{S} and the question is whether, given a set P of quantum states on the input of a circuit C, the set of quantum states on the output is equal to (or included in) a set S. Our framework leverages tree automata to compactly represent sets of quantum states and we develop transformers to implement the semantics of quantum gates over this representation. We implemented the proposed approach in a prototype tool and evaluated its performance against various benchmarks from the literature. The evaluation shows that our approach is quite scalable, for example, we managed to verify a large circuit with 40 qubits and 141,527 gates, or catch bugs injected into a circuit with 320 qubits and 1,758 gates, where all tools we compared with failed. Additionally, our work bridges quantum program verification and automata, opening new possibilities to exploit the richness of automata theory in quantum computing.},
+journal = {Commun. ACM},
+month = jun,
+pages = {85–93},
+numpages = {9}
+}
+
+
+
+@article{King76,
+  author       = {James C. King},
+  title        = {Symbolic Execution and Program Testing},
+  journal      = {Commun. {ACM}},
+  volume       = {19},
+  number       = {7},
+  pages        = {385--394},
+  year         = {1976},
+  url          = {https://doi.org/10.1145/360248.360252},
+  doi          = {10.1145/360248.360252},
+  timestamp    = {Tue, 06 Nov 2018 12:51:41 +0100},
+  biburl       = {https://dblp.org/rec/journals/cacm/King76.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
+}
+
+@inproceedings{SistlaCR23,
+  author       = {Meghana Sistla and
+                  Swarat Chaudhuri and
+                  Thomas W. Reps},
+  editor       = {Constantin Enea and
+                  Akash Lal},
+  title        = {Symbolic Quantum Simulation with {Quasimodo}},
+  booktitle    = {Computer Aided Verification - 35th International Conference, {CAV}
+                  2023, Paris, France, July 17-22, 2023, Proceedings, Part {III}},
+  series       = {Lecture Notes in Computer Science},
+  volume       = {13966},
+  pages        = {213--225},
+  publisher    = {Springer},
+  year         = {2023},
+  url          = {https://doi.org/10.1007/978-3-031-37709-9\_11},
+  doi          = {10.1007/978-3-031-37709-9\_11},
+  timestamp    = {Tue, 12 Sep 2023 07:57:21 +0200},
+  biburl       = {https://dblp.org/rec/conf/cav/SistlaCR23.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
+}
+
+@inproceedings{VinkhuijzenGHBWL23,
+  author       = {Lieuwe Vinkhuijzen and
+                  Thomas Grurl and
+                  Stefan Hillmich and
+                  Sebastiaan Brand and
+                  Robert Wille and
+                  Alfons Laarman},
+  editor       = {Georgiana Caltais and
+                  Christian Schilling},
+  title        = {Efficient Implementation of {LIMDDs} for Quantum Circuit Simulation},
+  booktitle    = {Model Checking Software - 29th International Symposium, {SPIN} 2023,
+                  Paris, France, April 26-27, 2023, Proceedings},
+  series       = {Lecture Notes in Computer Science},
+  volume       = {13872},
+  pages        = {3--21},
+  publisher    = {Springer},
+  year         = {2023},
+  url          = {https://doi.org/10.1007/978-3-031-32157-3\_1},
+  doi          = {10.1007/978-3-031-32157-3\_1},
+  timestamp    = {Wed, 17 May 2023 21:55:50 +0200},
+  biburl       = {https://dblp.org/rec/conf/spin/VinkhuijzenGHBWL23.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
+}
+
+@inproceedings{ThanosCL23,
+  author       = {Dimitrios Thanos and
+                  Tim Coopmans and
+                  Alfons Laarman},
+  editor       = {{\'{E}}tienne Andr{\'{e}} and
+                  Jun Sun},
+  title        = {Fast Equivalence Checking of Quantum Circuits of {Clifford} Gates},
+  booktitle    = {Automated Technology for Verification and Analysis - 21st International
+                  Symposium, {ATVA} 2023, Singapore, October 24-27, 2023, Proceedings,
+                  Part {II}},
+  series       = {Lecture Notes in Computer Science},
+  volume       = {14216},
+  pages        = {199--216},
+  publisher    = {Springer},
+  year         = {2023},
+  url          = {https://doi.org/10.1007/978-3-031-45332-8\_10},
+  doi          = {10.1007/978-3-031-45332-8\_10},
+  timestamp    = {Tue, 24 Oct 2023 16:55:54 +0200},
+  biburl       = {https://dblp.org/rec/conf/atva/ThanosCL23.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
+}
+
+@inproceedings{MillerT06,
+  author       = {D. Michael Miller and
+                  Mitchell A. Thornton},
+  title        = {{QMDD:} {A} Decision Diagram Structure for Reversible and Quantum
+                  Circuits},
+  booktitle    = {36th {IEEE} International Symposium on Multiple-Valued Logic ({ISMVL}
+                  2006), 17-20 May 2006, Singapore},
+  pages        = {30},
+  publisher    = {{IEEE} Computer Society},
+  year         = {2006},
+  url          = {https://doi.org/10.1109/ISMVL.2006.35},
+  doi          = {10.1109/ISMVL.2006.35},
+  timestamp    = {Thu, 23 Mar 2023 23:59:56 +0100},
+  biburl       = {https://dblp.org/rec/conf/ismvl/MillerT06.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
+}
+
+@inproceedings{ChenCLLT23,
+  author       = {Yu{-}Fang Chen and
+                  Kai{-}Min Chung and
+                  Ondrej Leng{\'{a}}l and
+                  Jyun{-}Ao Lin and
+                  Wei{-}Lun Tsai},
+  editor       = {Constantin Enea and
+                  Akash Lal},
+  title        = {{AutoQ}: An Automata-Based Quantum Circuit Verifier},
+  booktitle    = {Computer Aided Verification - 35th International Conference, {CAV}
+                  2023, Paris, France, July 17-22, 2023, Proceedings, Part {III}},
+  series       = {Lecture Notes in Computer Science},
+  volume       = {13966},
+  pages        = {139--153},
+  publisher    = {Springer},
+  year         = {2023},
+  url          = {https://doi.org/10.1007/978-3-031-37709-9\_7},
+  doi          = {10.1007/978-3-031-37709-9\_7},
+  timestamp    = {Tue, 12 Sep 2023 07:57:21 +0200},
+  biburl       = {https://dblp.org/rec/conf/cav/ChenCLLT23.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
+}
+
+@inproceedings{JacquemardKV09,
+  author       = {Florent Jacquemard and
+                  Francis Klay and
+                  Camille Vacher},
+  editor       = {Adrian{-}Horia Dediu and
+                  Armand{-}Mihai Ionescu and
+                  Carlos Mart{\'{\i}}n{-}Vide},
+  title        = {Rigid Tree Automata},
+  booktitle    = {Language and Automata Theory and Applications, Third International
+                  Conference, {LATA} 2009, Tarragona, Spain, April 2-8, 2009. Proceedings},
+  series       = {Lecture Notes in Computer Science},
+  volume       = {5457},
+  pages        = {446--457},
+  publisher    = {Springer},
+  year         = {2009},
+  url          = {https://doi.org/10.1007/978-3-642-00982-2\_38},
+  doi          = {10.1007/978-3-642-00982-2\_38},
+  timestamp    = {Thu, 14 Oct 2021 10:12:18 +0200},
+  biburl       = {https://dblp.org/rec/conf/lata/JacquemardKV09.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
+}
+
+@article{JacquemardKV11,
+  author       = {Florent Jacquemard and
+                  Francis Klay and
+                  Camille Vacher},
+  title        = {Rigid tree automata and applications},
+  journal      = {Inf. Comput.},
+  volume       = {209},
+  number       = {3},
+  pages        = {486--512},
+  year         = {2011},
+  url          = {https://doi.org/10.1016/j.ic.2010.11.015},
+  doi          = {10.1016/J.IC.2010.11.015},
+  timestamp    = {Thu, 14 Oct 2021 09:23:53 +0200},
+  biburl       = {https://dblp.org/rec/journals/iandc/JacquemardKV11.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
+}
+
+@inproceedings{BogaertT92,
+  author       = {Bruno Bogaert and
+                  Sophie Tison},
+  editor       = {Alain Finkel and
+                  Matthias Jantzen},
+  title        = {Equality and Disequality Constraints on Direct Subterms in Tree Automata},
+  booktitle    = {{STACS} 92, 9th Annual Symposium on Theoretical Aspects of Computer
+                  Science, Cachan, France, February 13-15, 1992, Proceedings},
+  series       = {Lecture Notes in Computer Science},
+  volume       = {577},
+  pages        = {161--171},
+  publisher    = {Springer},
+  year         = {1992},
+  url          = {https://doi.org/10.1007/3-540-55210-3\_181},
+  doi          = {10.1007/3-540-55210-3\_181},
+  timestamp    = {Tue, 14 May 2019 10:00:48 +0200},
+  biburl       = {https://dblp.org/rec/conf/stacs/BogaertT92.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
+}
+
+@inproceedings{SeidlR12,
+  author       = {Helmut Seidl and
+                  Andreas Reu{\ss}},
+  editor       = {Lars Birkedal},
+  title        = {Extending $\mathcal{H}_1$-Clauses with Path Disequalities},
+  booktitle    = {Foundations of Software Science and Computational Structures - 15th
+                  International Conference, {FOSSACS} 2012, Held as Part of the European
+                  Joint Conferences on Theory and Practice of Software, {ETAPS} 2012,
+                  Tallinn, Estonia, March 24 - April 1, 2012. Proceedings},
+  series       = {Lecture Notes in Computer Science},
+  volume       = {7213},
+  pages        = {165--179},
+  publisher    = {Springer},
+  year         = {2012},
+  url          = {https://doi.org/10.1007/978-3-642-28729-9\_11},
+  doi          = {10.1007/978-3-642-28729-9\_11},
+  timestamp    = {Tue, 14 May 2019 10:00:55 +0200},
+  biburl       = {https://dblp.org/rec/conf/fossacs/SeidlR12.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
+}
+
+@book{nipkow2002isabelle,
+  title={Isabelle/HOL: a proof assistant for higher-order logic},
+  author={Nipkow, Tobias and Paulson, Lawrence C and Wenzel, Markus},
+  volume={2283},
+  year={2002},
+  publisher={Springer Science \& Business Media}
+}
+
+@book{bertot2013interactive,
+  title={Interactive theorem proving and program development: Coq'Art: the calculus of inductive constructions},
+  author={Bertot, Yves and Cast{\'e}ran, Pierre},
+  year={2013},
+  publisher={Springer Science \& Business Media}
+}
+
+@inproceedings{li2021svsim,
+    title={SV-Sim: Scalable PGAS-based State Vector Simulation of Quantum Circuits},
+    author={Li, Ang and Krishnamoorthy, Sriram},
+    booktitle={Proceedings of the International Conference for High Performance Computing, Networking, Storage and Analysis},
+    year={2021}
+}
+
+
+@InProceedings{cade23,
+author="Chen, Yu-Fang
+and R{\"u}mmer, Philipp
+and Tsai, Wei-Lun",
+editor="Pientka, Brigitte
+and Tinelli, Cesare",
+title="A Theory of Cartesian Arrays (with Applications in Quantum Circuit Verification)",
+booktitle="Automated Deduction -- CADE 29",
+year="2023",
+publisher="Springer Nature Switzerland",
+address="Cham",
+pages="170--189",
+abstract="We present a theory of Cartesian arrays, which are multi-dimensional arrays with support for the projection of arrays to sub-arrays, as well as for updating sub-arrays. The resulting logic is an extension of Combinatorial Array Logic (CAL) and is motivated by the analysis of quantum circuits: using projection, we can succinctly encode the semantics of quantum gates as quantifier-free formulas and verify the end-to-end correctness of quantum circuits. Since the logic is expressive enough to represent quantum circuits succinctly, it necessarily has a high complexity; as we show, it suffices to encode the k-color problem of a graph under a succinct circuit representation, an NEXPTIME-complete problem. We present an NEXPTIME decision procedure for the logic and report on preliminary experiments with the analysis of quantum circuits using this decision procedure.",
+isbn="978-3-031-38499-8"
+}
+
+@book{EsparzaB23,
+  author={Javier Esparza and
+          Michael Blondin},
+  title={Automata Theory: An Algorithmic Approach},
+  isbn={9780262048637},
+  publisher={MIT Press},
+  year={2023}
+}
+
+@inproceedings{filliatre2013why3,
+  title={Why3—where programs meet provers},
+  author={Filli{\^a}tre, Jean-Christophe and Paskevich, Andrei},
+  booktitle={Programming Languages and Systems: 22nd European Symposium on Programming, ESOP 2013, Held As Part of the European Joint Conferences on Theory and Practice of Software, ETAPS 2013, Rome, Italy, March 16-24, 2013. Proceedings 22},
+  pages={125--128},
+  year={2013},
+  organization={Springer}
+}
+
+@article{HongZLFY22,
+  author       = {Xin Hong and
+                  Xiangzhen Zhou and
+                  Sanjiang Li and
+                  Yuan Feng and
+                  Mingsheng Ying},
+  title        = {A Tensor Network based Decision Diagram for Representation of Quantum
+                  Circuits},
+  journal      = {{ACM} Trans. Design Autom. Electr. Syst.},
+  volume       = {27},
+  number       = {6},
+  pages        = {60:1--60:30},
+  year         = {2022},
+  url          = {https://doi.org/10.1145/3514355},
+  doi          = {10.1145/3514355},
+  timestamp    = {Sun, 04 Aug 2024 19:50:15 +0200},
+  biburl       = {https://dblp.org/rec/journals/todaes/HongZLFY22.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
+}
+
+@misc{techrep,
+  title={Verifying Quantum Circuits with Level-Synchronized Tree Automata (Technical Report)},
+  author={Parosh Aziz Abdulla and
+          Yo{-}Ga Chen and
+          Yu{-}Fang Chen and
+          Lukáš Holík and
+          Ondřej Lengál and
+          Jyun-Ao Lin and
+          Fang-Yi Lo and
+          Wei-Lun Tsai},
+  eprint={2410.18540},
+  archivePrefix={arXiv},
+  primaryClass={cs.LO},
+  url={https://arxiv.org/abs/2410.18540},
+  note={\url{https://arxiv.org/abs/2410.18540}}
+}
+
+
+@article{abdulla2025verifying,
+  title={Verifying Quantum Circuits with Level-Synchronized Tree Automata},
+  author={Abdulla, Parosh Aziz and Chen, Yo-Ga and Chen, Yu-Fang and Hol{\'\i}k, Luk{\'a}{\v{s}} and Leng{\'a}l, Ond{\v{r}}ej and Lin, Jyun-Ao and Lo, Fang-Yi and Tsai, Wei-Lun},
+  journal={Proceedings of the ACM on Programming Languages},
+  volume={9},
+  number={POPL},
+  pages={923--953},
+  year={2025},
+  publisher={ACM New York, NY, USA}
+}
+
+@article{cacm25-pa,
+author = {Abdulla, Parosh Aziz},
+title = {A Symbolic Approach to Verifying Quantum Systems},
+year = {2025},
+issue_date = {June 2025},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+volume = {68},
+number = {6},
+issn = {0001-0782},
+url = {https://doi.org/10.1145/3725725},
+doi = {10.1145/3725725},
+journal = {Commun. ACM},
+month = jun,
+pages = {84},
+numpages = {1}
+}
+
+
+@article{childs2018toward,
+  title={Toward the first quantum simulation with quantum speedup},
+  author={Childs, Andrew M and Maslov, Dmitri and Nam, Yunseong and Ross, Neil J and Su, Yuan},
+  journal={Proceedings of the National Academy of Sciences},
+  volume={115},
+  number={38},
+  pages={9456--9461},
+  year={2018},
+  publisher={National Academy of Sciences}
+}
+
+@article{lloyd1996universal,
+  title={Universal quantum simulators},
+  author={Lloyd, Seth},
+  journal={Science},
+  volume={273},
+  number={5278},
+  pages={1073--1078},
+  year={1996},
+  publisher={American Association for the Advancement of Science}
+}
+
+@incollection{feynman2018simulating,
+  title={Simulating physics with computers},
+  author={Feynman, Richard P},
+  booktitle={Feynman and computation},
+  pages={133--153},
+  year={2018},
+  publisher={cRc Press}
+}
+
+@article{cao2019quantum,
+  title={Quantum chemistry in the age of quantum computing},
+  author={Cao, Yudong and Romero, Jonathan and Olson, Jonathan P and Degroote, Matthias and Johnson, Peter D and Kieferov{\'a}, M{\'a}ria and Kivlichan, Ian D and Menke, Tim and Peropadre, Borja and Sawaya, Nicolas PD and others},
+  journal={Chemical reviews},
+  volume={119},
+  number={19},
+  pages={10856--10915},
+  year={2019},
+  publisher={ACS Publications}
+}
+
+@inproceedings{chen2025autoq,
+  title={AutoQ 2.0: From Verification of Quantum Circuits to Verification of Quantum Programs},
+  author={Chen, Yu-Fang and Chung, Kai-Min and Hsieh, Min-Hsiu and Huang, Wei-Jia and Leng{\'a}l, Ond{\v{r}}ej and Lin, Jyun-Ao and Tsai, Wei-Lun},
+  booktitle={TACAS 2025},
+  pages={87--108},
+  year={2025},
+  organization={Springer}
+}
+
+@book{DrosteKV09,
+  author={Manfred Droste and
+          Werner Kuich and
+          Heiko Vogler},
+  title={Handbook of Weighted Automata},
+  isbn={978-3-642-01492-5},
+  publisher={Springer},
+  year={2009}
+}
+
+@article{fang2024symbolic,
+  title={Symbolic execution for quantum error correction programs},
+  author={Fang, Wang and Ying, Mingsheng},
+  journal={Proceedings of the ACM on Programming Languages},
+  volume={8},
+  number={PLDI},
+  pages={1040--1065},
+  year={2024},
+  publisher={ACM New York, NY, USA}
+}
+
+@inproceedings{chen2025verifying,
+    author={Chen, Kean and Liu, Yuhao and Fang, Wang and Paykin, Jennifer and Wu, Xin-Chuan and Schmitz, Albert and Zdancewic, Steve and Li, Gushu},
+    title={Verifying Fault-Tolerance of Quantum Error Correction Codes},
+    booktitle = {Computer Aided Verification, 12th International Conference, {CAV}
+               2025},
+  series    = {LNCS},
+  publisher = {Springer},
+  year      = {2025}
+}
+
+@article{huang2025efficient,
+author = {Huang, Qifan and Zhou, Li and Fang, Wang and Zhao, Mengyu and Ying, Mingsheng},
+title = {Efficient Formal Verification of Quantum Error Correcting Programs},
+year = {2025},
+issue_date = {June 2025},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+volume = {9},
+number = {PLDI},
+url = {https://doi.org/10.1145/3729293},
+doi = {10.1145/3729293},
+abstract = {Quantum error correction (QEC) is fundamental for suppressing noise in quantum hardware and enabling fault-tolerant quantum computation. In this paper, we propose an efficient verification framework for QEC programs. We define an assertion logic and a program logic specifically crafted for QEC programs and establish a sound proof system. We then develop an efficient method for handling verification conditions (VCs) of QEC programs: for Pauli errors, the VCs are reduced to classical assertions that can be solved by SMT solvers, and for non-Pauli errors, we provide a heuristic algorithm. We formalize the proposed program logic in Coq proof assistant, making it a verified QEC verifier. Additionally, we implement an automated QEC verifier, Veri-QEC, for verifying various fault-tolerant scenarios. We demonstrate the efficiency and broad functionality of the framework by performing different verification tasks across various scenarios. Finally, we present a benchmark of 14 verified stabilizer codes.},
+journal = {Proc. ACM Program. Lang.},
+month = jun,
+articleno = {190},
+numpages = {26},
+keywords = {Formal verification, Hoare logic, Quantum error correction, Quantum programming language}
+}
+
+@inproceedings{ChenJ25,
+  author       = {Tian{-}Fu Chen and
+                  Jie{-}Hong R. Jiang},
+  editor       = {Arie Gurfinkel and
+                  Marijn Heule},
+  title        = {SliQSim: {A} Quantum Circuit Simulator and Solver for Probability
+                  and Statistics Queries},
+  booktitle    = {Tools and Algorithms for the Construction and Analysis of Systems
+                  - 31st International Conference, {TACAS} 2025, Held as Part of the
+                  International Joint Conferences on Theory and Practice of Software,
+                  {ETAPS} 2025, Hamilton, ON, Canada, May 3-8, 2025, Proceedings, Part
+                  {III}},
+  series       = {Lecture Notes in Computer Science},
+  volume       = {15698},
+  pages        = {129--138},
+  publisher    = {Springer},
+  year         = {2025},
+  url          = {https://doi.org/10.1007/978-3-031-90660-2\_7},
+  doi          = {10.1007/978-3-031-90660-2\_7},
+  timestamp    = {Wed, 11 Jun 2025 21:00:06 +0200},
+  biburl       = {https://dblp.org/rec/conf/tacas/ChenJ25.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
+}
+
+@inproceedings{Chen0JJL24,
+  author       = {Tian{-}Fu Chen and
+                  Yu{-}Fang Chen and
+                  Jie{-}Hong Roland Jiang and
+                  S{\'{a}}ra Jobranov{\'{a}} and
+                  Ondrej Leng{\'{a}}l},
+  editor       = {Jinjun Xiong and
+                  Robert Wille},
+  title        = {Accelerating Quantum Circuit Simulation with Symbolic Execution and
+                  Loop Summarization},
+  booktitle    = {Proceedings of the 43rd {IEEE/ACM} International Conference on Computer-Aided
+                  Design, {ICCAD} 2024, Newark Liberty International Airport Marriott,
+                  NJ, USA, October 27-31, 2024},
+  pages        = {42:1--42:9},
+  publisher    = {{ACM}},
+  year         = {2024},
+  url          = {https://doi.org/10.1145/3676536.3676711},
+  doi          = {10.1145/3676536.3676711},
+  timestamp    = {Fri, 09 May 2025 20:27:58 +0200},
+  biburl       = {https://dblp.org/rec/conf/iccad/Chen0JJL24.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
+}
+
+@incollection{BrassardHMT00,
+    AUTHOR = {Brassard, Gilles and H\o{y}er, Peter and Mosca, Michele and
+              Tapp, Alain},
+     TITLE = {Quantum amplitude amplification and estimation},
+ BOOKTITLE = {Quantum computation and information ({W}ashington, {DC},
+              2000)},
+    SERIES = {Contemp. Math.},
+    VOLUME = {305},
+     PAGES = {53--74},
+ PUBLISHER = {Amer. Math. Soc., Providence, RI},
+      YEAR = {2002},
+      ISBN = {0-8218-2140-7},
+   MRCLASS = {81P68 (81-02)},
+  MRNUMBER = {1947332},
+       DOI = {10.1090/conm/305/05215},
+       URL = {https://doi.org/10.1090/conm/305/05215},
+}
+
+@inproceedings{BrassardHT98,
+  author       = {Gilles Brassard and
+                  Peter H{\o}yer and
+                  Alain Tapp},
+  editor       = {Kim Guldstrand Larsen and
+                  Sven Skyum and
+                  Glynn Winskel},
+  title        = {Quantum Counting},
+  booktitle    = {Automata, Languages and Programming, 25th International Colloquium,
+                  ICALP'98, Aalborg, Denmark, July 13-17, 1998, Proceedings},
+  series       = {Lecture Notes in Computer Science},
+  volume       = {1443},
+  pages        = {820--831},
+  publisher    = {Springer},
+  year         = {1998},
+  url          = {https://doi.org/10.1007/BFb0055105},
+  doi          = {10.1007/BFB0055105},
+  timestamp    = {Tue, 14 May 2019 10:00:44 +0200},
+  biburl       = {https://dblp.org/rec/conf/icalp/BrassardHT98.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
+}
+
+@article{Peres85,
+  title = {Reversible logic and quantum computers},
+  author = {Peres, Asher},
+  journal = {Phys. Rev. A},
+  volume = {32},
+  issue = {6},
+  pages = {3266--3276},
+  numpages = {0},
+  year = {1985},
+  month = {Dec},
+  publisher = {American Physical Society},
+  doi = {10.1103/PhysRevA.32.3266},
+  url = {https://link.aps.org/doi/10.1103/PhysRevA.32.3266}
+}
+
+@article{Post46,
+  author = {Emil Post},
+  title = {A variant of a recursively unsolvable problem},
+  journal = {Bulletin of the American Mathematical Society},
+  volume = {52},
+  year = {1946},
+  doi = {10.1090/S0002-9904-1946-08555-9}
+}
+

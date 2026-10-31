@@ -1,0 +1,236 @@
+\documentclass{article}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{amsfonts,amsmath,amsthm,mathtools}
+\usepackage[english]{babel}
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage{subfigure}
+\usepackage{float}
+\usepackage{braket}
+\usepackage{algorithm}
+%\usepackage{algpseudocode}
+\usepackage[noEnd=true]{algpseudocodex}
+%%%%%%%%%%%%
+\algnewcommand\algorithmicforeach{\textbf{for each}}
+\algdef{S}[FOR]{ForEach}[1]{\algorithmicforeach\ #1\ \algorithmicdo}
+%%%%%%%%%%%%%%%%%%
+%\usepackage[noend, ruled]{algorithm2e}
+\usepackage[capitalize]{cleveref}
+
+\usepackage{tikz}
+\usepackage{quantikz}
+% TikZ
+\usetikzlibrary{arrows,quantikz2,calc,automata,positioning}
+\pgfdeclarelayer{bg}
+\pgfdeclarelayer{bg1}
+\pgfsetlayers{bg1,bg,main}
+%included below to draw boxes around gates
+% \usetikzlibrary{fit,backgrounds}
+%\usepackage{adjustbox}
+\usepackage{todonotes}
+\usepackage{xspace}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{cleveref}
+
+
+
+
+\input{macros}
+
+\title{CQ-automata}
+\author{plfm.iis }
+\date{April 2026}
+
+
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+
+\section{Overview}
+
+
+\section{model with unary and binary transitions}
+
+\paragraph{Stemmed perfect binary trees.}
+Fix $m, n \in \natz$.
+Write $[m] \coloneq \{1, 2, \dots, m\}$ and, as usual,
+$\bit^{\le n} \coloneq \bigcup_{0 \le i \le n} \bit^i$,
+with $\emptyword$ denoting the empty word.
+
+A \emph{stemmed perfect binary tree of stem length $m$ and (binary) height $n$} over a nonempty set $\Sigma$ is a function
+\[
+T \colon [m] \uplus \bit^{\le n} \to \Sigma .
+\]
+The elements of $[m]$ are the \emph{stem nodes} and the elements of $\bit^{\le n}$ are the \emph{binary nodes}. The \emph{root} of $T$ is the stem node $1$ if $m \ge 1$ and the binary node $\emptyword$ otherwise. The parent-child relation is fixed by:
+\begin{itemize}
+    \item every stem node $i \in [m-1]$ has the unique child $i + 1$, also a stem node;
+    \item the deepest stem node $m$ (when $m \ge 1$) has the unique child $\emptyword$, the root of the binary part;
+    \item every internal binary node $v \in \bit^{<n}$ has children $v.0$ and $v.1$;
+    \item every binary leaf $v \in \bit^n$ has no children.
+\end{itemize}
+The \emph{height} of a node is its distance from the root:
+\[
+\htof{v} \coloneq
+\begin{cases}
+i-1 & \text{if } v = i \in [m], \\
+m + |v| & \text{if } v \in \bit^{\le n}.
+\end{cases}
+\]
+We call $\htof{v}$ also the \emph{level} of~$v$.
+Levels $0,\dots,m-1$ form the \emph{stem levels} and levels $m,\dots,m+n$ form the \emph{binary levels}; the binary leaves all sit at level $m+n$.
+We refer to $T$ as a \emph{stemmed tree} of \emph{shape} $(m,n)$; when $m=0$ a stemmed tree is just a perfect binary tree in the sense of~\cite{LSTA2025}.
+
+In this work, stemmed trees of shape $(m,n)$ serve as semantic objects representing
+pairs $(\sigma, \varphi)$ where
+\begin{itemize}
+    \item $\sigma \colon X \to \bools$ is a \emph{classical store} over a fixed finite set
+      of $m$ Boolean variables $X = \{x_1, \dots, x_m\}$, obtained by reading off
+      the Boolean value carried by the label at each stem node; and
+    \item $\varphi \in \complex^{2^n}$ is the \emph{pure $n$-qubit state} whose
+      computational-basis amplitude at $v \in \bit^n$ is $T(v)$.
+\end{itemize}
+Internal binary nodes carry no amplitudes; they encode only the binary branching structure of the quantum part. Henceforth, \emph{tree} means stemmed perfect binary tree.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\paragraph{Automation}
+We consider the \emph{stemmed level-synchronized tree automation (\slsta)}, an \lsta of a form specialized to stemmed trees defined above. 
+Let $\Sigma$ be a ranked alphabet with $\#: \Sigma \to \{0,1,2\}$, where symbols of rank~0 label leaves, symbols of rank~{1} label the ``classical'' internal nodes and symbols of rank~{2} label ``quantum'' internal nodes.
+We denote the set of rank~0 symbols by $\Sigma_0$ and the set of rank~1 symbols by $\mathtt{Store}$. 
+An \slsta is a tuple $\aut = \tuple{Q,\Sigma,\Delta,\rootstates}$ where $Q$ is a finite set of \emph{states}, 
+$\rootstates \subseteq Q$ is a set of \emph{root states}, and $\Delta$ is a finite set of transitions of the following forms:
+\[
+\begin{array}{ll}
+    \transtree{q}{C}{f(q_0,q_1)}  &\text{internal binary transition}  \\
+    \transtree{q}{B}{b(p)} &\text{internal unary transition}\\
+    \transtree{q}{C}{f} & \text{leaf transition} \\
+\end{array}
+\]
+with $q_0,q_1,p \in Q$, $f \in \Sigma$ and $B, C \subseteq \natz$ a finite set of \emph{choices}. 
+For a transition $\delta \in \Delta$, we write $\topof\delta$ for its source state, $\symof\delta$ for its symbol, 
+$\ell(\delta)$ for its choice set,
+and $\botof\delta$ for its pair of target states (in the binary case).
+Transitions with the same source state have pairwise disjoint choice sets, i.e., 
+\[
+\forall \delta_1 \neq \delta_2 \in \Delta: \topof{\delta_1} = \topof{\delta_2} \implies \ell(\delta_1) \cap \ell(\delta_2) = \emptyset.
+\]
+
+
+\paragraph{Semantics.} 
+\jal{below to be rewriten}
+A \emph{run} of $\aut$ on a stemmed tree $T: [m] \uplus  \bit^{\le n} \to \Sigma$ is a total map $\run : [m] \uplus \bit^{\le n} \to \Delta$ such that for every node $v$, $\symof{\run(v)} = T(v)$ and, whenever 
+$v \in [m-1]$, $\botof\run(v) = \bigl(v+1 \bigr)$;
+$v = m$, $\botof\run(v) = \bigl( \run(0) \big)$;
+$v \in \bit^{\le n}$,
+%is internal,
+$\botof{\run(v)}=\bigl(\topof{\run(v.0)}, \topof{\run(v.1)}\bigr)$; while $v$ is a leaf node, $\run(v)$ is of the form $\transtree{q}{C}{T(v)}$.
+
+For each \emph{level $d$}, we define %\jal{level notation is not used anywhere, so if necessary we can remove it and use length of node to say level anywhere it concerns.}
+$\level(\run,d) \coloneq \{ \run(w) \mid w \in \dom(T) \land \htof{w} = d\}$.
+A run is \emph{level-synchronized} if all transitions from the same level share at least one common choice, or equivalently, for all $d \in \natz$, 
+\[C_d \coloneq \bigcap_{\delta \in \level(\run,d)} \ell(\delta) \neq \emptyset.\] 
+An \emph{accepting} run is a run $\run$ such that $\topof{\run(\emptyword)} \in \rootstates$ and $\run$ is level-synchronized.
+%all transitions from the same level share the same common choices, i.e., $\forall d\in \nat: \bigcap_{\delta \in \level(\run,d)} \ell(\delta) \neq \emptyset$. 
+The \emph{language of $\aut$} is the set $\langof{\aut}$ of trees $T$ with an accepting run. 
+
+%Notice that $\aut$ is level-synchronized,
+%all transitions used by an accepting run at the same level share a common set of choice values.
+Notice that an accepting run $\run$ on a tree of height $n$ determines a sequence
+%\jal{double check level start from 0 or 1}
+\[
+(C_1,\dots,C_n),
+\]
+%where $C_d $ is the intersection of the choice sets attached to the transitions used by $\rho$ at level $d$, or equivalently, 
+%for each level $d$, $C_d = \bigcap_{\delta \in \level(\run,d)} \ell(\delta)$.
+%\[
+%C_d = \bigcap_{\delta \in \level(\run,d)} \ell(\delta).
+%\]
+We call this the \emph{choice sequence} of $\rho$ and write $\choice(\rho)$. 
+If $\rho$ is an accepting run of $\aut$ on a tree $T$,
+the sequence $\choice(\rho)$ is also called a \emph{choice sequence of $T$ (with respect to $\aut$)}.
+Different runs may yield different choice sequences.
+
+%\paragraph{forgetful transformation?}
+
+
+\paragraph{Quantum Unitary Operations}
+unitary operations on the quantum part of \slsta is defined as the ones acting on the \lsta parts. 
+
+\paragraph{Classical Unary Boolean Operations}
+We consider $\texttt{SET\ d,v}$ and $\texttt{NOT\ d}$ for $1 \leq d \leq m$ on the stem. The corresponding \slsta transformations are straightforward:
+\begin{itemize}
+\item for $\texttt{SET\ d,v}$, modify the transitions $\transtree{p}{C}{b(q)} \in \Delta_k$ by $\transtree{p}{C}{v(q)}$
+\item for $\texttt{NOT\ d}$, modify the transitions $\transtree{p}{C}{b(q)} \in \Delta_k$ by $\transtree{p}{C}{\overline{b}(q)}$
+\end{itemize} 
+
+\paragraph{Classical (Downward) Binary operations}
+Let $f: \bit^2 \to \bit$ be a Boolean function. Fix $1 \leq s < d \leq m$. We consider the following classical binary instructions only:
+\begin{center}\begin{tabular}{@{}lll@{}}
+\hline
+Instruction & Meaning & \(f(u,v)\) \\
+\hline
+
+\texttt{COPY\ s,d} & \(y_d:=y_s\) & \(u\) \\
+\texttt{AND\ s,d} & \(y_d:=y_s\land y_d\) & \(u\land v\) \\
+\texttt{OR\ s,d} & \(y_d:=y_s\lor y_d\) & \(u\lor v\) \\
+\texttt{XOR\ s,d} & \(y_d:=y_s\oplus y_d\) & \(u\oplus v\) \\
+%\bottomrule
+\hline 
+\end{tabular}\end{center}
+We construct the corresponding sLSTA transformations for the above binary instructions associated to a Boolean function $f$ as follows.
+Let $M_{s,d} = \biguplus_{k=s+1}^d P_k$. All the states in $M_{s,d}$ are replaced as
+\begin{equation*}
+P'_k = \begin{cases}
+\set{[p,u] \mid p \in P_k\  \land\ u \in \bit } &\text{ if } s < k \leq d \\
+P_k &\text{ otherwise}
+\end{cases}, \quad Q'_q =Q_q, \quad R'=R, \quad \Phi' = \Phi.
+\end{equation*}
+Transitions are all preserved excepts on the stem interval between $s$ and $d$.
+\begin{itemize}
+\item (read the source): at $k=s$, 
+\begin{equation*}
+\Delta'_k := \set{\transtree{p}{C}{b[q,b]} \mid  \transtree{p}{C}{b(q)} \in \Delta_k}
+\end{equation*}
+\item (carry the bit through intervening positions): if $s < k < d$, for $u \in \bit$, each
+\begin{equation*}
+\Delta'_k := \set{ \transtree{[p,u]}{C}{b([q,u])} \mid [p,u] \in P'_k\ \land\ \transtree{p}{C}{b(q)} \in \Delta_k }
+\end{equation*}
+\item (write): if $k=d$,
+\begin{equation*}
+\Delta'_k:= \set{ \transtree{[p,u]}{C}{f(u,b)(q)} \mid [p,u] \in P'_k \ \land \ \transtree{p}{C}{b(q)} \in \Delta_k}
+\end{equation*}
+\end{itemize}
+
+Soundness and complexity: 
+    \begin{itemize}
+        \item The constructions of the classical operations are correct.
+        \item $|Q'| = |Q| + |M|, \quad |\Delta'| \leq |\Delta| + |D|$ where $M= M_{s,d}$ and $D= \biguplus_{k=s+1}^d \Delta_d$.
+    \end{itemize}
+
+
+\paragraph{Measurement Operations}
+Combine AutoQ's measurement plus $\texttt{SET\ d, v}$ where $v$ is the measurement outcome.
+
+\hide{\section{modeling classical states with a choice-indexed valuation map}
+In the context of verifying classical-quantum (CQ) programs, a critical challenge is faithfully representing the global state of the system while respecting the fundamental physical and mathematical differences between classical and quantum information. While Level-Synchronized Tree Automata (LSTA) provide a synchronized structure for quantum states, forcing classical variables into a symmetric automata framework introduces artificial dependencies and over-engineering.
+
+To address this, we decouple the classical state from the automata structure entirely, proposing a Choice-Indexed Valuation Map (CIVM). This approach is built upon three core observations:
+
+1. The Ontological Divergence of State Representations
+
+The mathematical foundations of classical and quantum variables are inherently different.
+\begin{itemize}
+    \item \textbf{Quantum states (Tensor Product):} Due to superposition and entanglement, a quantum system resides in a joint Hilbert space ($\mathcal{H}_1 \otimes \mathcal{H}_2 \cdots \otimes \mathcal{H}_n$). The state of a single qubit cannot be independently evaluated without considering its correlation with the entire system. 
+\end{itemize}
+}
+
+\section{Experiments}
+\subsection{Steane code}
+
+
+\bibliography{literature}
+\end{document}

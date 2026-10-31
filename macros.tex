@@ -1,0 +1,403 @@
+%%% =====================================================================
+%%% macros.tex --- CQ-automata project (stemmed LSTA + classical-quantum
+%%%                program verification)
+%%%
+%%% Single-file macros for this project.  Section layout mirrors the
+%%% modular layout in JAC's latex-macros repository
+%%% (https://.../latex-macros/macros/{core,automata,verification}.tex)
+%%% so that pieces can be migrated out into the shared library later.
+%%%
+%%% Loaded once via   \input{macros}   in main.tex.
+%%%
+%%% Conventions
+%%%   - Sets in \mathbb           (\nat, \natz, \bools, \complex)
+%%%   - Bit alphabet              \bit = \{0,1\}
+%%%   - Tuples                    \tuple{a, b}
+%%%   - Tool names                \autoq, \autq, \tool, ...
+%%%   - LSTA / sLSTA names        \aut = \mathcal{A}; root states \rootstates
+%%%   - Stem alphabet alias       \Store = Sigma_1 (rank-1 stem labels)
+%%%   - Author notes              \ol, \yfc, \jal, \wl, \fil
+%%%
+%%% Sections
+%%%   1.  Author notes and dev macros
+%%%   2.  Sets, numbers, words
+%%%   3.  Tree primitives (perfect binary, stemmed perfect binary)
+%%%   4.  LSTA / sLSTA: states, transitions, runs, languages
+%%%   5.  Transition-arrow rendering helpers
+%%%   6.  Quantum gates and operations
+%%%   7.  Specifications and Hoare-style triples
+%%%   8.  Tool names and method acronyms
+%%%   9.  Small tree-drawing helpers
+%%%  10.  Miscellaneous
+%%% =====================================================================
+
+
+%%% =====================================================================
+%%% 1. Author notes and dev macros
+%%% =====================================================================
+
+%%% Inline coloured author notes.  Toggle off by redefining to \gobble.
+\newcommand{\ol}[1]{\textcolor{blue}{\ifmmode \text{[OL: #1]}\else [OL: #1] \fi}}
+\newcommand{\yfc}[1]{\textcolor{green!50!blue}{\ifmmode \text{[YF: #1]}\else [YF: #1] \fi}}
+\newcommand{\jal}[1]{\textcolor{pink}{\ifmmode \text{[JA: #1]}\else [JA: #1] \fi}}
+\newcommand{\wl}[1]{\textcolor{orange}{\ifmmode \text{[WL: #1]}\else [WL: #1] \fi}}
+\newcommand{\fil}[1]{\textcolor{red}{\ifmmode \text{[FI: #1]}\else [FI: #1] \fi}}
+
+%%% Hide content (handy for parking paragraphs).  \showit kept for symmetry.
+\newcommand{\hide}[1]{}
+\newcommand{\showit}[1]{#1}
+
+%%% Marker for places where a definition was added during a rewrite.
+%%% Currently no-op; switch to the commented version to highlight.
+% \newcommand{\newdef}[1]{\textcolor{purple}{[newdef: #1]}}
+\newcommand{\newdef}[1]{}
+
+
+%%% =====================================================================
+%%% 2. Sets, numbers, words
+%%% =====================================================================
+
+\newcommand{\nat}{\mathbb{N}}                 % positive naturals (no 0)
+\newcommand{\natz}{\nat_{0}}                  % naturals with 0
+\newcommand{\naturals}{\nat}                  % alias
+\newcommand{\integers}{\mathbb{Z}}
+\newcommand{\bools}{\mathbb{B}}
+\newcommand{\complex}{\mathbb{C}}
+\newcommand{\cnum}{\complex}                  % older alias kept for back-compat
+
+%%% Alphabets and bit strings
+\newcommand{\bit}{\{0,1\}}                    % binary alphabet
+\newcommand{\unary}{\{\mathtt{1}\}}           % unary alphabet (legacy)
+\newcommand{\abc}{\Gamma}                     % generic alphabet
+\newcommand{\colors}{\Omega}                  % colour / choice universe (legacy)
+
+%%% The empty word.  Sometimes typeset epsilon, sometimes varepsilon; we
+%%% standardise on \varepsilon for readability.
+\newcommand{\emptyword}{\varepsilon}
+
+%%% Tuples and scalable angle brackets.
+%%% \tuple is a plain macro (matches existing usage q = \tuple{Q, ...}).
+\newcommand{\tuple}[1]{\langle #1 \rangle}
+
+%%% Common short fractions used in amplitudes.
+\newcommand{\smallfrac}[2]{{\textstyle \frac{#1}{#2}}}
+\newcommand{\invtwo}{\smallfrac{1}{2}}
+\newcommand{\invsqrttwo}{\smallfrac{1}{\sqrt{2}}}
+
+
+%%% =====================================================================
+%%% 3. Tree primitives
+%%%
+%%% Covers both the perfect binary trees of [LSTA2025] and the
+%%% stemmed perfect binary trees introduced in this paper.
+%%% =====================================================================
+
+%%% ---- generic tree language and domain --------------------------------
+\newcommand{\trees}{\mathbb{T}}               % set of all (ranked) trees
+\newcommand{\treesof}[1]{\trees_{#1}}
+\newcommand{\abctrees}{\treesof{\abc}}
+
+\newcommand{\dom}{\mathrm{dom}}               % \dom(T) -- domain of a tree
+\newcommand{\domof}[1]{\dom(#1)}
+\newcommand{\height}[1]{h(#1)}                % alternate height notation
+\newcommand{\htof}[1]{\mathrm{ht}(#1)}        % preferred: \htof{v}
+
+%%% Subtree, tree-cons, dummy zero tree, concatenation.
+\newcommand{\subtreeof}[2]{#1_{|#2}}
+\newcommand{\treecons}[3]{\mathsf{cons}(#1, #2, #3)}
+\newcommand{\tzeroof}[1]{t^{#1}_{\mathit{zero}}}
+\newcommand{\concat}{\mathbin{\bullet}}
+
+%%% ---- ranked alphabets ------------------------------------------------
+%%% Arity function on a ranked alphabet.  \arity{\Sigma} -> '#'.
+%%% Defined as a macro so we can refer to it both in display ($\arity\colon
+%%% \Sigma \to \{0,1,2\}$) and in prose ("\arity-1 symbols").
+\newcommand{\arity}{\#}
+\newcommand{\arityof}[1]{\arity(#1)}
+
+%%% Stem-alphabet alias used by the sLSTA: Store = Sigma_1, the rank-1
+%%% symbols carrying classical-store information.
+\newcommand{\Store}{\mathtt{Store}}
+
+%%% ---- shape of a stemmed perfect binary tree --------------------------
+%%% (m, n) = (stem length, binary height).  Use \shape{m}{n}.
+\newcommand{\shape}[2]{(#1, #2)}
+
+%%% Root of a (possibly stemmed) tree T.  v_star with a star subscript.
+\newcommand{\rootnode}{v_{\star}}
+
+
+%%% =====================================================================
+%%% 4. LSTA / sLSTA: states, transitions, runs, languages
+%%% =====================================================================
+
+%%% ---- automata names (calligraphic) ----------------------------------
+\newcommand{\aut}{\mathcal{A}}
+\newcommand{\autb}{\mathcal{B}}
+\newcommand{\autm}{\mathcal{M}}
+\newcommand{\autinv}{\mathcal{I}}
+\newcommand{\cut}{\mathcal{C}}                % combined / context automaton
+\newcommand{\nut}{\mathcal{N}}
+\newcommand{\autex}{\aut_{\mathit{ex}}}       % a running-example automaton
+\newcommand{\butex}{\autb_{\mathit{ex}}}
+\newcommand{\autpre}{\aut_{\mathrm{pre}}}
+\newcommand{\autpost}{\aut_{\mathrm{post}}}
+\newcommand{\autbases}{\aut_{\mathit{bases}}}
+\newcommand{\autRes}{\aut_{\mathsf{Result}}}
+\newcommand{\auto}{\mathscr{A}}               % script-A (rarely used)
+
+%%% ---- root states, transitions ----------------------------------------
+\newcommand{\rootstates}{\mathcal{R}}
+
+%%% A transition rendered as   q  --[C]-->  body.
+%%% Body is either a binary symbol f(q0,q1), a unary symbol b(p), or a
+%%% leaf symbol f.
+\newcommand{\transtree}[3]{{#1}\xrightarrow{#2}~{#3}}
+
+%%% Selectors on a transition delta.
+\newcommand{\topof}[1]{\mathtt{top}(#1)}      % source state
+\newcommand{\symof}[1]{\mathtt{sym}(#1)}      % label symbol
+\newcommand{\botof}[1]{\mathtt{bot}(#1)}      % target state(s)
+
+%%% ---- runs and level synchronization ---------------------------------
+\newcommand{\run}{\rho}                       % canonical run variable
+\newcommand{\level}{\mathrm{level}}           % \level(\run, d)
+\newcommand{\choice}{\mathrm{choice}}         % \choice(\run)
+
+%%% Language and choice-indexed language.
+\newcommand{\lang}{\mathcal{L}}
+\newcommand{\langof}[1]{\lang(#1)}
+
+%%% Semantic brackets [[ . ]].  Provided by stmaryrd; we fall back to
+%%% ASCII look-alikes if the package is not available.
+\IfFileExists{stmaryrd.sty}{\usepackage{stmaryrd}}{%
+  \providecommand{\llbracket}{[\![}%
+  \providecommand{\rrbracket}{]\!]}%
+}
+\newcommand{\semof}[1]{\llbracket #1 \rrbracket}
+\newcommand{\semofof}[2]{\semof{#1}(#2)}
+
+%%% Up-to-scale entailment relation used for measurement-up-to-norm.
+\newcommand{\entailedbyuptosc}{\mathrel{\models^{\mathit{uts}}}}
+
+
+%%% =====================================================================
+%%% 5. Transition-arrow rendering helpers
+%%%
+%%% Used in figures and inline transition diagrams.  Kept as-is from the
+%%% legacy macros; they construct compact labelled arrows of the form
+%%%       --[label]-->
+%%% =====================================================================
+
+\makeatletter
+\DeclareRobustCommand{\shortto}{%
+  \mathrel{\mathpalette\short@to\relax}%
+}
+\DeclareRobustCommand{\shortminus}{%
+  \mathrel{\mathpalette\short@minus\relax}%
+}
+\newcommand{\short@to}[2]{%
+  \mkern2mu
+  \clipbox{{.5\width} 0 0 0}{$\m@th#1\vphantom{+}{\rightarrow}$}%
+}
+\newcommand{\short@minus}[2]{%
+  \mkern2mu
+  \clipbox{{.5\width} 0 0 0}{$\m@th#1\vphantom{+}{-}$}%
+}
+\makeatother
+
+\newcommand{\labeledto}[1]{%
+  \raisebox{-0.2pt}{\scalebox{1.2}{\ensuremath{%
+    {\shortminus}\hspace{-1.7pt}%
+    \raisebox{0.16ex}{$\scriptstyle[#1\hspace{-0.28pt}]$}%
+    \hspace{-2.25pt}{\shortto}}}}}
+\newcommand{\newlabeledto}[1]{%
+  \mbox{$\longrightarrow\rlap{\hspace*{-4.95mm}%
+    \raisebox{0.00mm}{\scalebox{0.8}{#1}}}$\!}}
+
+\newcommand{\move}[1]{\labeledto{#1}}
+
+%%% LTS-style transitions (used in transition systems, not LSTA proper).
+\newcommand{\ltstr}{\mathit{Tr}}
+\newcommand{\ltr}[1]{\xrightarrow{\smash{\raisebox{-0.7mm}{$\scriptstyle #1$}}}}
+
+%%% Named-form transition macros from the legacy file (kept for the few
+%%% places that build figures with them).
+\newcommand{\trntransof}[4]{#1 \to #2(#3, #4)}
+\newcommand{\transof}[5]{#1 \newlabeledto{#3} #2(#4, #5)}
+\newcommand{\trnimageof}[2]{#1(#2)}
+\newcommand{\trnimagestateof}[3]{\trnimageof{#1}{#2, #3}}
+
+
+%%% =====================================================================
+%%% 6. Quantum gates and operations
+%%% =====================================================================
+
+\newcommand{\ketof}[1]{\ket{#1}}
+
+%%% Gate "wrappers" used in math mode.
+\newcommand{\gateof}[1]{\mathrm{#1}}
+\newcommand{\matrixof}[1]{\mathit{mat}(#1)}
+\newcommand{\rowof}[1]{\mathit{row}(#1)}
+\newcommand{\vectorof}[1]{\mathit{vec}(#1)}
+
+%%% Common single- and two-qubit gates.
+\newcommand{\had}{\mathsf{H}}
+\newcommand{\hadtensor}{\had^{\otimes}}
+\newcommand{\sgate}{\mathsf{S}}
+\newcommand{\xgate}{\mathsf{X}}
+\newcommand{\idgate}{\mathrm{Id}}
+\newcommand{\cnot}{\mathsf{CX}}
+\newcommand{\ccnot}{\mathsf{CCX}}
+\newcommand{\rotx}{\mathsf{R}_{x}(\tfrac{\pi}{2})}
+
+%%% Measurement.   \measurement{i}{=b}  -- measure qubit i, observe b.
+\newcommand{\measurement}[2]{M_{#1}{#2}}
+
+%%% Tree-transformation helpers (single-gate construction labels L/R).
+\newcommand{\leftT}{\mathtt{L}}
+\newcommand{\rightT}{\mathtt{R}}
+
+%%% Classical store and qubit "directions" used in sLSTA constructions.
+%%% These name the two principal directions of a classical branch.
+\newcommand{\leftof}[1]{\mathtt{left}(#1)}
+\newcommand{\rightof}[1]{\mathtt{right}(#1)}
+
+
+%%% =====================================================================
+%%% 7. Specifications and Hoare-style triples
+%%% =====================================================================
+
+%%% Standard Hoare triple {P} c {Q}.
+\newcommand{\hoaretrip}[3]{\{#1\}~{#2}~\{#3\}}
+%%% "Functional" triple with brackets (|P|) c (|Q|), used for specs
+%%% intended to encode a Choi--Jamiolkowski-style state pair.
+\newcommand{\assert}[1]{(\!|{#1}|\!)}
+\newcommand{\funtrip}[3]{\assert{#1}\; {#2}\; \assert{#3}}
+
+%%% Spec pair  c | psi >  used to bind a star pre/post to a state.
+\newcommand{\specpair}[2]{#2\ket{#1}}
+\newcommand{\specdef}[1]{#1\specpair{*}{}}
+
+%%% Pre-/post-condition standard names (kept for cross-paper consistency).
+\newcommand{\PreCond}{P}
+\newcommand{\PostCond}{Q}
+\newcommand{\pre}{\mathrm{Pre}}
+\newcommand{\post}{\mathrm{Post}}
+
+%%% Vectors of all-zeros / all-ones; the imaginary-zero subspace name.
+\newcommand{\veczero}{\vec{0}}
+\newcommand{\vecone}{\vec{1}}
+\newcommand{\imzero}{\psi_{\Im}}
+
+
+%%% =====================================================================
+%%% 8. Tool names and method acronyms
+%%%
+%%% \tool refers to *our* tool; aliases below are for related-work and
+%%% comparison tables.
+%%% =====================================================================
+
+\newcommand{\tool}{\textsc{CQ-AutoQ}\xspace}    % working name -- adjust later
+\newcommand{\autoq}{\textsc{AutoQ}\xspace}
+\newcommand{\sliqsim}{\textsc{SliQSim}\xspace}
+\newcommand{\svsim}{\textsc{SV-Sim}\xspace}
+\newcommand{\sliqec}{\textsc{SliQEC}\xspace}
+\newcommand{\feynman}{\textsc{Feynman}\xspace}
+\newcommand{\feynopt}{\textsc{Feynopt}\xspace}
+\newcommand{\qcec}{\textsc{Qcec}\xspace}
+\newcommand{\quasimodo}{\textsc{Quasimodo}\xspace}
+\newcommand{\qbricks}{\textsc{Qbricks}\xspace}
+\newcommand{\qiskit}{\textsc{Qiskit}\xspace}
+\newcommand{\vata}{\textsc{Vata}\xspace}
+\newcommand{\quartz}{\textsc{Quartz}\xspace}
+\newcommand{\symqv}{\textsc{symQV}\xspace}
+\newcommand{\caal}{\textsc{CaAL}\xspace}
+\newcommand{\isabelle}{\textsc{Isabelle}\xspace}
+\newcommand{\coq}{\textsc{Coq}\xspace}
+\newcommand{\qasm}{\textsc{OpenQASM}\xspace}
+
+%%% Method acronyms.
+\newcommand{\lsta}{LSTA\xspace}
+\newcommand{\lstas}{LSTAs\xspace}
+\newcommand{\slsta}{sLSTA\xspace}
+\newcommand{\slstas}{sLSTAs\xspace}
+
+%%% Complexity classes (lower-case to avoid clash with cleveref labels).
+\newcommand{\pspace}{\textsc{PSpace}\xspace}
+\newcommand{\expspace}{\textsc{ExpSpace}\xspace}
+\newcommand{\bigO}{\mathcal{O}}
+
+
+%%% =====================================================================
+%%% 9. Small tree-drawing helpers
+%%%
+%%% Inline TikZ snippets for compact tree literals in prose.  Pulled
+%%% from the legacy file unchanged.
+%%% =====================================================================
+
+\newcommand{\smalltreeof}[3]{%
+\scalebox{0.75}{%
+\raisebox{3mm}{%
+\tikz[level distance=2mm,sibling distance=8mm,baseline,inner sep=0.2mm]{%
+\node {$#1$} child {node {$#2$}}%
+child {node {$#3$}};}}}%
+}
+
+\newcommand{\bigtreeof}[6]{%
+\scalebox{0.75}{%
+\raisebox{3mm}{%
+\tikz[level distance=2mm,
+  level 1/.style={sibling distance=12mm},
+  level 2/.style={sibling distance=8mm},
+  baseline,inner sep=0.2mm]{%
+\node {$#1$} child {node {$#2$}
+                    child {node {$#3$}}
+                    child {node {$#4$}}
+                   }%
+             child {node {$#2$}
+                    child {node {$#5$}}
+                    child {node {$#6$}}
+                   };
+}}}%
+}
+
+
+%%% =====================================================================
+%%% 10. Miscellaneous
+%%% =====================================================================
+
+%%% Support set of a linear / weighted combination.
+\newcommand{\supp}{\text{st}}
+\newcommand{\suppof}[1]{\supp(#1)}
+
+%%% Linear-form notation used in some proofs.
+\newcommand{\linforms}{\mathbb{L}}
+\newcommand{\linformsof}[1]{\linforms_{#1}}
+\newcommand{\linof}[1]{\boldsymbol{#1}}
+\newcommand{\linindexof}[2]{\linof{#1}[#2]}
+
+%%% Positive part [x]_+.
+\newcommand{\mm}[1]{[#1]_{+}}
+
+%%% Misc symbols carried over from prior projects.
+\newcommand{\sep}{\texttt{\#}}                % separator symbol
+\newcommand{\initmark}{\to}
+\newcommand{\partialto}{\rightharpoonup}
+\newcommand{\compose}{\mathbin{\circ}}
+\newcommand{\wildcard}{\mathtt{?}}
+
+%%% Counting / encoding helpers.
+\newcommand{\numof}[1]{\mathit{num}(#1)}
+\newcommand{\revof}[1]{\mathit{rev}(#1)}
+\newcommand{\encof}[1]{\mathit{enc}(#1)}
+
+%%% A generic arithmetic operator placeholder used in some proofs.
+\newcommand{\arithop}{\mathbin{\circledast}}
+\newcommand{\minus}{\mathit{minus}}
+
+%%% Choice / colour strings (legacy).
+\newcommand{\colorstr}[1]{\mathbf{colorstr}(#1)}
+\newcommand{\coloraut}[1]{\mathbf{dom}(#1)}
+
+%%% ---- end of macros.tex ---------------------------------------------
